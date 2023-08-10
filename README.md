@@ -22,6 +22,7 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
      ```
 1. Change all instances of `TOOL_NAME` throughout the repo with the actual tool name. Places include:
    - `CHANGELOG.md`
+   - `mkdocs.yml`
    - `README.md`
    - `pyproject.toml`
    - `src/TOOL_NAME`
@@ -32,9 +33,9 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
    - dependencies
    - project URLs
 1. Write your nextflow workflow in `src/TOOL_NAME/workflow`.
-1. Write your documentation in `docs/`.
-1. In settings, go to General > Pages and select the `gh-pages` branch.
-   mkdocs will build your site under the `gh-pages` branch, and GitHub Pages will make it available at `https://ccbr.github.io/TOOL_NAME`.
+1. Write your documentation in `docs/` and enable GitHub Pages.
+   - In settings, go to General > Pages and select the `gh-pages` branch.
+     mkdocs will build your site under the `gh-pages` branch, and GitHub Pages will make it available at `https://ccbr.github.io/TOOL_NAME`.
 
 You can look for instances of `TOOL_NAME` in case you missed any with grep:
 
