@@ -1,11 +1,17 @@
 # TOOL_NAME v0.1.0.apha
 
-- API-breaking changes:
-    - example 2
-- New features:
-    - example 1
-- Bug fixes:
-    - example 3
+## API-breaking changes
+
+-   change 1
+-   example 2
+
+## New features
+
+-   new feat 1
+
+## Bug fixes
+
+-   description of bug fixed
 
 # TOOL_NAME v0.1.0
 

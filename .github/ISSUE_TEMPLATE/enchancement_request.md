@@ -1,10 +1,9 @@
 ---
 name: Enhancement request
 about: Suggest an additional component to an already existing feature
-title: ''
-labels: ''
-assignees: ''
-
+title: ""
+labels: ""
+assignees: ""
 ---
 
 **Describe what enhancement you'd like to see.**

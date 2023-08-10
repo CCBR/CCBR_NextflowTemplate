@@ -26,6 +26,7 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
 1. Write your documentation in `docs/`.
 
 You can look for instances of `TOOL_NAME` in case you missed any with grep:
+
 ```sh
 grep -r "TOOL_NAME" *
 ```
@@ -33,11 +34,13 @@ grep -r "TOOL_NAME" *
 ## Usage
 
 Install the tool in edit mode:
+
 ```sh
 pip3 install -e .
 ```
 
 Run the example
+
 ```sh
 TOOL_NAME run --input "Hello world"
 ```
