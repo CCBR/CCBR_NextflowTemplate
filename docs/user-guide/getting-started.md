@@ -12,22 +12,22 @@ The CARLISLE Pipelie beings with raw FASTQ files and performs trimming followed 
 
 The following are sub-commands used within CARLISLE:
 
--   initialize: initialize the pipeline
--   dryrun: predict the binding of peptides to any MHC molecule
--   cluster: execute the pipeline on the Biowulf HPC
--   local: execute a local, interactive, session
--   git: execute GitHub actions
--   unlock: unlock directory
--   DAG: create DAG report
--   report: create SNAKEMAKE report
--   testrun: copies test manifests and files to WORKDIR
+- initialize: initialize the pipeline
+- dryrun: predict the binding of peptides to any MHC molecule
+- cluster: execute the pipeline on the Biowulf HPC
+- local: execute a local, interactive, session
+- git: execute GitHub actions
+- unlock: unlock directory
+- DAG: create DAG report
+- report: create SNAKEMAKE report
+- testrun: copies test manifests and files to WORKDIR
 
 ## 1.2 Setup Dependencies
 
 CARLISLE has several dependencies listed below. These dependencies can be installed by a sysadmin. All dependencies will be automatically loaded if running from Biowulf.
 
--   bedtools: "bedtools/2.30.0"
--   bedops: "bedops/2.4.40"
+- bedtools: "bedtools/2.30.0"
+- bedops: "bedops/2.4.40"
 
 ## 1.3 Login to the cluster
 

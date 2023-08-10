@@ -4,6 +4,6 @@ Should include a list of all contributors, including GitHub handles when appropr
 
 The following members contributed to the development of the CARLISLE pipeline:
 
--   [Samantha Sevilla](https://github.com/slsevilla)
+- [Samantha Sevilla](https://github.com/slsevilla)
 
 SS contributed to the generating the source code and all members contributed to the main concepts and analysis.

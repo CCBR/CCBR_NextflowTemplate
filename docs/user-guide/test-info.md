@@ -31,7 +31,7 @@ bash ./path/to/dir/carlisle --runmode=testrun --workdir=/path/to/output/dir
 
 ```
 
--   An expected output for the `testrun` is as follows:
+- An expected output for the `testrun` is as follows:
 
 ```
 Job stats:

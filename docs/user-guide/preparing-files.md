@@ -8,9 +8,9 @@ The pipeline is controlled through editing configuration and manifest files. Def
 
 The configuration files control parameters and software of the pipeline. These files are listed below:
 
--   config/config.yaml
--   resources/cluster.yaml
--   resources/tools.yaml
+- config/config.yaml
+- resources/cluster.yaml
+- resources/tools.yaml
 
 ### 2.1.1 Cluster Config
 
@@ -24,12 +24,12 @@ The tools configuration file dictates the version of each software or program th
 
 There are several groups of parameters that are editable for the user to control the various aspects of the pipeline. These are :
 
--   Folders and Paths
-    -   These parameters will include the input and output files of the pipeline, as well as list all manifest names.
--   User parameters
-    -   These parameters will control the pipeline features. These include thresholds and whether to perform processes.
--   References
-    -   These parameters will control the location of index files, spike-in references, adaptors and species calling information.
+- Folders and Paths
+  - These parameters will include the input and output files of the pipeline, as well as list all manifest names.
+- User parameters
+  - These parameters will control the pipeline features. These include thresholds and whether to perform processes.
+- References
+  - These parameters will control the location of index files, spike-in references, adaptors and species calling information.
 
 #### 2.1.3.1 User Parameters
 
@@ -64,20 +64,20 @@ The following information must be included:
 
 There are two manifests, one which required for all pipelines and one that is only required if running a differential analysis. These files describe information on the samples and desired contrasts. The paths of these files are defined in the snakemake_config.yaml file. These files are:
 
--   samplemanifest
--   contrasts
+- samplemanifest
+- contrasts
 
 ### 2.2.1 Samples Manifest (REQUIRED)
 
 This manifest will include information to sample level information. It includes the following column headers:
 
--   sampleName: the sample name WITHOUT replicate number (IE "SAMPLE")
--   replicateNumber: the sample replicate number (IE "1")
--   isControl: whether the sample should be identified as a control (IE "Y")
--   controlName: the name of the control to use for this sample (IE "CONTROL")
--   controlReplicateNumber: the replicate number of the control to use for this sample (IE "1")
--   path_to_R1: the full path to R1 fastq file (IE "/path/to/sample1.R1.fastq")
--   path_to_R2: the full path to R1 fastq file (IE "/path/to/sample2.R2.fastq")
+- sampleName: the sample name WITHOUT replicate number (IE "SAMPLE")
+- replicateNumber: the sample replicate number (IE "1")
+- isControl: whether the sample should be identified as a control (IE "Y")
+- controlName: the name of the control to use for this sample (IE "CONTROL")
+- controlReplicateNumber: the replicate number of the control to use for this sample (IE "1")
+- path_to_R1: the full path to R1 fastq file (IE "/path/to/sample1.R1.fastq")
+- path_to_R2: the full path to R1 fastq file (IE "/path/to/sample2.R2.fastq")
 
 An example sampleManifest file is shown below:
 

@@ -2,16 +2,16 @@
 
 ## API-breaking changes
 
--   change 1
--   example 2
+- change 1
+- example 2
 
 ## New features
 
--   new feat 1
+- new feat 1
 
 ## Bug fixes
 
--   description of bug fixed
+- description of bug fixed
 
 # TOOL_NAME v0.1.0
 
