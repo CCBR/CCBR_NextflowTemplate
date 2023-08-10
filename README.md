@@ -4,7 +4,7 @@ CCBR template for creating Nextflow pipelines
 
 This template takes inspiration from nektool[^1] and the nf-core template. If you plan to contribute your pipeline to nf-core, don't use this template -- instead follow their instructions[^2].
 
-[^1]: nektool https://github.com/beardymcjohnface/nektool]
+[^1]: nektool https://github.com/beardymcjohnface/nektool
 [^2]: instructions for nf-core pipelines https://nf-co.re/docs/contributing/tutorials/creating_with_nf_core
 
 ## Getting started
@@ -12,6 +12,7 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
 1. On GitHub, click "Use this template" and "Create a new repository".
 1. Choose an owner and repository name.
 1. Change all instances of `TOOL_NAME` throughout the repo with the actual tool name. Places include: 
+    - `CHANGELOG.md`
     - `README.md`
     - `pyproject.toml`
     - `src/TOOL_NAME`
