@@ -18,7 +18,7 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.indexes
-    - toc.integrate 
+    - toc.integrate
   palette:
     - scheme: default
       primary: indigo
@@ -94,7 +94,7 @@ markdown_extensions:
 # Page Tree
 nav:
   - Background : index.md
-  - Usage: 
+  - Usage:
     - 1. Getting Started : user-guide/getting-started.md
     - 2. Preparing Files: user-guide/preparing-files.md
     - 3. Running the Pipeline: user-guide/run.md

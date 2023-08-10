@@ -10,7 +10,7 @@ The CARLISLE Pipelie beings with raw FASTQ files and performs trimming followed 
 
 The following are sub-commands used within CARLISLE:
 
-- initialize: initalize the pipeline
+- initialize: initialize the pipeline
 - dryrun: predict the binding of peptides to any MHC molecule
 - cluster: execute the pipeline on the Biowulf HPC
 - local: execute a local, interactive, session
@@ -33,7 +33,7 @@ CARLISLE has been exclusively tested on Biowulf HPC. Login to the cluster's head
 ssh -Y $USER@biowulf.nih.gov
 ```
 
-## 1.4 Load an interactive session 
+## 1.4 Load an interactive session
 An interactive session should be started before performing any of the pipeline sub-commands, even if the pipeline is to be executed on the cluster.
 
 ```

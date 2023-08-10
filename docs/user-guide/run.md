@@ -36,7 +36,7 @@ bash ./data/CCBR_Pipeliner/Pipelines/CARLISLE/carlisle --runmode=COMMAND --workd
 ```
 
 ## 3.3 Typical Workflow
-A typical command workflow, running on the cluser, is as follows:
+A typical command workflow, running on the cluster, is as follows:
 ```
 bash ./data/CCBR_Pipeliner/Pipelines/CARLISLE/carlisle --runmode=init --workdir=/path/to/output/dir
 

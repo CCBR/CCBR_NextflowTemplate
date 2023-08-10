@@ -23,7 +23,7 @@
 hs_err_pid*
 replay_pid*
 
-# nextflow 
+# nextflow
 .nextflow*
 work/
 data/

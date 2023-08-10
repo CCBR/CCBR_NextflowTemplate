@@ -84,7 +84,7 @@ https://www.nextflow.io/docs/latest/config.html#config-profiles
 RUN EXAMPLES:
 Required:           TOOL_NAME run --input [file]
 Specify threads:    TOOL_NAME run ... --threads [threads]
-Enable conda:       TOOL_NAME run ... --use-conda 
+Enable conda:       TOOL_NAME run ... --use-conda
 Add NextFlow args:  TOOL_NAME run ... -work-dir workDir -with-docker
 """
 
@@ -110,7 +110,7 @@ def run(_input, **kwargs):
             os.path.join("workflow", "main.nf")
         ),  # Full path to Nextflow file
         merge_config=merge_config,
-        **kwargs
+        **kwargs,
     )
 
 
@@ -144,7 +144,7 @@ def citation(**kwargs):
 
 cli.add_command(run)
 cli.add_command(config)
-#cli.add_command(citation) # uncomment if TOOL_NAME is published in a journal or Zenodo
+# cli.add_command(citation) # uncomment if TOOL_NAME is published in a journal or Zenodo
 
 
 def main():

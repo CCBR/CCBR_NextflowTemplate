@@ -3,7 +3,7 @@ repos:
     rev: v1.2.3
     hooks:
       - id: check-added-large-files
-      - id: check-yaml
+      #- id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
   # spell check

@@ -11,7 +11,7 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
 
 1. On GitHub, click "Use this template" and "Create a new repository".
 1. Choose an owner and repository name.
-1. Change all instances of `TOOL_NAME` throughout the repo with the actual tool name. Places include: 
+1. Change all instances of `TOOL_NAME` throughout the repo with the actual tool name. Places include:
     - `CHANGELOG.md`
     - `README.md`
     - `pyproject.toml`
@@ -34,7 +34,7 @@ grep -r "TOOL_NAME" *
 
 Install the tool in edit mode:
 ```sh
-pip3 install -e . 
+pip3 install -e .
 ```
 
 Run the example
@@ -44,7 +44,20 @@ TOOL_NAME run --input "Hello world"
 
 ## Maintaining your tool
 
-- Increment the version number following semantic versioning[^3] in `src/TOOL_NAME/VERSION`
-- Keep the changelog up to date with any user-facing changes in `CHANGELOG.md`
+### Use pre-commit hooks
+
+Pre-commit can automatically format your code, check for spelling errors, etc. every time you commit.
+
+Install [pre-commit](https://pre-commit.com/#installation) if you haven't already,
+then run `pre-commit install` to install the hooks specified in `.pre-commit-config.yaml`.
+Pre-commit will run the hooks every time you commit.
+
+### Versions
+
+Increment the version number following semantic versioning[^3] in `src/TOOL_NAME/VERSION`
 
 [^3]: semantic versioning guidelines https://semver.org/
+
+### Changelog
+
+Keep the changelog up to date with any user-facing changes in `CHANGELOG.md`

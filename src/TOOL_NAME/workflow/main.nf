@@ -1,7 +1,7 @@
 nextflow.enable.dsl=2
 
-process yeet {  
-  output: 
+process yeet {
+  output:
     stdout
 
   script:
@@ -16,14 +16,14 @@ workflow {
 
 
 process any2fasta {
-  //conda environemnt
+  //conda environment
   conda 'bioconda::any2fasta=0.4.2'
-  
+
   //singularity image
-  container 'https://depot.galaxyproject.org/singularity/any2fasta:0.4.2--hdfd78af_3' 
-  
+  container 'https://depot.galaxyproject.org/singularity/any2fasta:0.4.2--hdfd78af_3'
+
   ////docker image
-  //container 'quay.io/biocontainers/any2fasta:0.4.2--hdfd78af_3'                       
+  //container 'quay.io/biocontainers/any2fasta:0.4.2--hdfd78af_3'
 
   input: path(FQ)
 
@@ -32,7 +32,7 @@ process any2fasta {
   script:
   """
   which any2fasta
-  any2fasta $FQ 
+  any2fasta $FQ
   """
 }
 

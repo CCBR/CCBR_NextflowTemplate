@@ -11,7 +11,7 @@ The configuration files control parameters and software of the pipeline. These f
 - resources/tools.yaml
 
 ### 2.1.1 Cluster Config
-The cluster configuration file dictates the resouces to be used during submission to Biowulf HPC. There are two differnt ways to control these parameters - first, to control the default settings, and second, to create or edit individual rules. These parameters should be edited with caution, after significant testing.
+The cluster configuration file dictates the resources to be used during submission to Biowulf HPC. There are two different ways to control these parameters - first, to control the default settings, and second, to create or edit individual rules. These parameters should be edited with caution, after significant testing.
 
 ### 2.1.2 Tools Config
 The tools configuration file dictates the version of each software or program that is being used in the pipeline.
@@ -20,18 +20,18 @@ The tools configuration file dictates the version of each software or program th
 There are several groups of parameters that are editable for the user to control the various aspects of the pipeline. These are :
 
 - Folders and Paths
-    - These parameters will include the input and ouput files of the pipeline, as well as list all manifest names.
+    - These parameters will include the input and output files of the pipeline, as well as list all manifest names.
 - User parameters
     - These parameters will control the pipeline features. These include thresholds and whether to perform processes.
 - References
     - These parameters will control the location of index files, spike-in references, adaptors and species calling information.
 
-#### 2.1.3.1 User Parameters 
+#### 2.1.3.1 User Parameters
 
 ##### 2.1.3.1.1 Duplication Status
 Users can select duplicated peaks (dedup) or non-deduplicated peaks (no_dedup) through the user parameter.
 ```
-dupstatus: "dedup, no_dedup" 
+dupstatus: "dedup, no_dedup"
 ```
 
 ##### 2.1.3.1.2 Macs2 additional option
@@ -39,7 +39,7 @@ MACS2 can be run with or without the control. adding a control will increase pea
 Selecting "Y" for the `macs2_control` will run the paired control sample provided in the sample manifest
 
 #### 2.1.3.2 References
-Additional reference files may be added to the pipeline, if other species were to be used. 
+Additional reference files may be added to the pipeline, if other species were to be used.
 
 The absolute file paths which must be included are:
 
@@ -52,7 +52,7 @@ The following information must be included:
 2.  macs2_g: "macs2 genome shorthand; IE mm IE hs"
 
 ## 2.2 Preparing Manifests
-There are two manifests, one which required for all pipeliens and one that is only required if running a differential analysis. These files describe information on the samples and desired contrasts. The paths of these files are defined in the snakemake_config.yaml file. These files are:
+There are two manifests, one which required for all pipelines and one that is only required if running a differential analysis. These files describe information on the samples and desired contrasts. The paths of these files are defined in the snakemake_config.yaml file. These files are:
 
 - samplemanifest
 - contrasts
