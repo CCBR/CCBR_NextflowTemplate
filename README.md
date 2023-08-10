@@ -9,8 +9,17 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
 
 ## Getting started
 
-1. On GitHub, click "Use this template" and "Create a new repository".
-1. Choose an owner and repository name.
+1. Create a new repository from this template using either of these options:
+   - [**The GitHub web interface**](https://github.com/CCBR/CCBR_NextflowTemplate):
+     Click "Use this template" and "Create a new repository", then choose an owner (CCBR) and the repository name as the new tool's name.
+   - [**The GitHub command line interface**](https://cli.github.com/):
+     ```sh
+     gh repo create CCBR/TOOL_NAME \
+        --description "One-line description of your tool" \
+        --public \
+        --template CCBR/CCBR_NextflowTemplate \
+        --confirm
+     ```
 1. Change all instances of `TOOL_NAME` throughout the repo with the actual tool name. Places include:
    - `CHANGELOG.md`
    - `README.md`
@@ -24,6 +33,8 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
    - project URLs
 1. Write your nextflow workflow in `src/TOOL_NAME/workflow`.
 1. Write your documentation in `docs/`.
+1. In settings, go to General > Pages and select the `gh-pages` branch.
+   mkdocs will build your site under the `gh-pages` branch, and GitHub Pages will make it available at `https://ccbr.github.io/TOOL_NAME`.
 
 You can look for instances of `TOOL_NAME` in case you missed any with grep:
 
