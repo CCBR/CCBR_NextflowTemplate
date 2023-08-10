@@ -52,7 +52,7 @@ TOOL_NAME = "TOOL_NAME.__main__:main"
 Homepage = "https://ccbr.github.io/TOOL_NAME"
 Documentation = "https://ccbr.github.io/TOOL_NAME"
 Repository = "https://github.com/CCBR/TOOL_NAME"
-Changelog = "https://github.com/CCBR/TOOL_NAME/blob/main/CHANGELOG.md"
+Changelog = "https://github.com/CCBR/TOOL_NAME/blob/main/docs/CHANGELOG.md"
 
 [tools.setuptools]
 packages = ["TOOL_NAME"]

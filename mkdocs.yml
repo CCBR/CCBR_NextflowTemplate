@@ -101,3 +101,4 @@ nav:
   - FAQ:
       - Troubleshooting: user-guide/troubleshooting.md
       - Contributions: user-guide/contributions.md
+  - Changelog: CHANGELOG.md
