@@ -6,14 +6,18 @@ repos:
       - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
-
+  # spell check
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.4
+    hooks:
+    - id: codespell
+  # Python formatting
   - repo: https://github.com/psf/black
     rev: 23.7.0
     hooks:
       - id: black
-
+  # R formatting
   - repo: https://github.com/lorenzwalthert/precommit
     rev: v0.1.2
     hooks:
       - id: style-files
-      - id: spell-check
