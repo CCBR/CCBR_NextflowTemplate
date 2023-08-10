@@ -1,15 +1,15 @@
 # Project Information
-site_name: PIPELINENAME Pipeline
+site_name: TOOL_NAME Pipeline
 site_author: Samantha Sevilla, Ph.D.
 site_description: >-
-  PIPELINENAME Pipeline
+  TOOL_NAME Pipeline
 # Repository
-repo_name: CCBR/PIPELINENAME
-repo_url: https://github.com/CCBR/PIPELINENAME
-edit_uri: https://github.com/CCBR/PIPELINENAME/edit/main/docs/
+repo_name: CCBR/TOOL_NAME
+repo_url: https://github.com/CCBR/TOOL_NAME
+edit_uri: https://github.com/CCBR/TOOL_NAME/edit/main/docs/
 
 # Copyright
-copyright: Copyright &copy; 2022 CCBR
+copyright: Copyright &copy; 2023 CCBR
 
 # Configuration
 theme:
