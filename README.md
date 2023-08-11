@@ -21,7 +21,7 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
         --confirm
      ```
 1. Change all instances of `TOOL_NAME` throughout the repo with the actual tool name. Places include:
-   - `CHANGELOG.md`
+   - `docs/CHANGELOG.md`
    - `mkdocs.yml`
    - `README.md`
    - `pyproject.toml`
@@ -75,4 +75,4 @@ Increment the version number following semantic versioning[^3] in `src/TOOL_NAME
 
 ### Changelog
 
-Keep the changelog up to date with any user-facing changes in `CHANGELOG.md`
+Keep the changelog up to date with any user-facing changes in `docs/CHANGELOG.md`
