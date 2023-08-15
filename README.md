@@ -43,6 +43,8 @@ You can look for instances of `TOOL_NAME` in case you missed any with grep:
 grep -r "TOOL_NAME" *
 ```
 
+For a work-in-progress example of this template in action, see the [CHAMPAGNE](https://github.com/CCBR/CHAMPAGNE) repo.
+
 ## Usage
 
 Install the tool in edit mode:
