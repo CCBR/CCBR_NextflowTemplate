@@ -25,7 +25,7 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
    - `mkdocs.yml`
    - `README.md`
    - `pyproject.toml`
-   - `src/TOOL_NAME`
+   - `src/TOOL_NAME` -- recommend making this directory name lowercase, but all other instances uppercase.
    - `src/TOOL_NAME/CITATION`
    - `src/TOOL_NAME/__main__.py`
 1. Edit `pyproject.toml` with correct information for your tool. You will likely need to change:
