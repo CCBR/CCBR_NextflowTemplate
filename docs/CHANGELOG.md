@@ -1,18 +1,18 @@
-# TOOL_NAME v0.1.0.apha
+## TOOL_NAME v0.1.0.apha
 
-## API-breaking changes
+### API-breaking changes
 
 - change 1
 - example 2
 
-## New features
+### New features
 
 - new feat 1
 
-## Bug fixes
+### Bug fixes
 
 - description of bug fixed
 
-# TOOL_NAME v0.1.0
+## TOOL_NAME v0.1.0
 
 This is the first release of TOOL_NAME 🎉

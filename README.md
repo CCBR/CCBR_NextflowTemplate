@@ -21,11 +21,11 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
         --confirm
      ```
 1. Change all instances of `TOOL_NAME` throughout the repo with the actual tool name. Places include:
-   - `CHANGELOG.md`
+   - `docs/CHANGELOG.md`
    - `mkdocs.yml`
    - `README.md`
    - `pyproject.toml`
-   - `src/TOOL_NAME`
+   - `src/TOOL_NAME` -- recommend making this directory name lowercase, but all other instances uppercase.
    - `src/TOOL_NAME/CITATION`
    - `src/TOOL_NAME/__main__.py`
 1. Edit `pyproject.toml` with correct information for your tool. You will likely need to change:
@@ -42,6 +42,8 @@ You can look for instances of `TOOL_NAME` in case you missed any with grep:
 ```sh
 grep -r "TOOL_NAME" *
 ```
+
+For a work-in-progress example of this template in action, see the [CHAMPAGNE](https://github.com/CCBR/CHAMPAGNE) repo.
 
 ## Usage
 
@@ -75,4 +77,4 @@ Increment the version number following semantic versioning[^3] in `src/TOOL_NAME
 
 ### Changelog
 
-Keep the changelog up to date with any user-facing changes in `CHANGELOG.md`
+Keep the changelog up to date with any user-facing changes in `docs/CHANGELOG.md`
