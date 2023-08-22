@@ -1,8 +1,8 @@
 # Project Information
 site_name: TOOL_NAME Pipeline
-site_author: Samantha Sevilla, Ph.D.
+site_author: CCR Collaborative Bioinformatics Resource
 site_description: >-
-  TOOL_NAME Pipeline
+  insert a one-line description of TOOL_NAME here
 # Repository
 repo_name: CCBR/TOOL_NAME
 repo_url: https://github.com/CCBR/TOOL_NAME
