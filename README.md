@@ -1,13 +1,8 @@
-# Nextflow Template
+# Nextflow Template <!-- replace this header with TOOL_NAME -->
 
-CCBR template for creating Nextflow pipelines
+CCBR template for creating Nextflow pipelines <!-- replace this line with the description of TOOL_NAME -->
 
-This template takes inspiration from nektool[^1] and the nf-core template. If you plan to contribute your pipeline to nf-core, don't use this template -- instead follow their instructions[^2].
-
-[^1]: nektool https://github.com/beardymcjohnface/nektool
-[^2]: instructions for nf-core pipelines https://nf-co.re/docs/contributing/tutorials/creating_with_nf_core
-
-## Getting started
+## Using this template
 
 1. Create a new repository from this template using either of these options:
    - [**The GitHub web interface**](https://github.com/CCBR/CCBR_NextflowTemplate):
@@ -20,27 +15,39 @@ This template takes inspiration from nektool[^1] and the nf-core template. If yo
         --template CCBR/CCBR_NextflowTemplate \
         --confirm
      ```
-1. Change all instances of `TOOL_NAME` throughout the repo with the actual tool name. Places include:
-   - `docs/CHANGELOG.md`
-   - `mkdocs.yml`
-   - `README.md`
-   - `pyproject.toml`
-   - `src/TOOL_NAME` -- recommend making this directory name lowercase, but all other instances uppercase.
-   - `src/TOOL_NAME/CITATION`
-   - `src/TOOL_NAME/__main__.py`
-1. Edit `pyproject.toml` with correct information for your tool. You will likely need to change:
+1. Read and follow the contributing guidelines in `docs/CONTRIBUTING.md`.
+   Be sure to [install `pre-commit` and its hooks](docs/CONTRIBUTING.md#use-pre-commit-hooks) before making any commits.
+1. Change all instances of `TOOL_NAME` and `tool_name` throughout the repo with the actual tool name. Replace `TOOL_NAME` with the all-caps version and `tool_name` with the lowercase version. Places include:
+
+   <!-- `grep -irl tool_name * | sort` -->
+
+   ```
+   CITATION
+   README.md
+   docs/CHANGELOG.md
+   main.nf
+   mkdocs.yml
+   nextflow.config
+   pyproject.toml
+   src/__main__.py
+   ```
+
+1. Edit `pyproject.toml` and `nextflow.config` with correct metadata for your tool. You will likely need to change:
    - author names and emails
    - dependencies
    - project URLs
-1. Write your nextflow workflow in `src/TOOL_NAME/workflow`.
+1. Write your nextflow workflow.
 1. Write your documentation in `docs/` and enable GitHub Pages.
    - In settings, go to General > Pages and select the `gh-pages` branch.
      mkdocs will build your site under the `gh-pages` branch, and GitHub Pages will make it available at `https://ccbr.github.io/TOOL_NAME`.
+1. Edit the README:
+   1. Change the title and description.
+   1. Delete the "Using this template" section.
 
 You can look for instances of `TOOL_NAME` in case you missed any with grep:
 
 ```sh
-grep -r "TOOL_NAME" *
+grep -ir "TOOL_NAME" *
 ```
 
 For a work-in-progress example of this template in action, see the [CHAMPAGNE](https://github.com/CCBR/CHAMPAGNE) repo.
@@ -59,22 +66,21 @@ Run the example
 TOOL_NAME run --input "Hello world"
 ```
 
-## Maintaining your tool
+![dag](assets/dag.png)
 
-### Use pre-commit hooks
+## Help & Contributing
 
-Pre-commit can automatically format your code, check for spelling errors, etc. every time you commit.
+Come across a **bug**? Open an [issue](https://github.com/CCBR/TOOL_NAME/issues) and include a minimal reproducible example.
 
-Install [pre-commit](https://pre-commit.com/#installation) if you haven't already,
-then run `pre-commit install` to install the hooks specified in `.pre-commit-config.yaml`.
-Pre-commit will run the hooks every time you commit.
+Have a **question**? Ask it in [discussions](https://github.com/CCBR/TOOL_NAME/discussions).
 
-### Versions
+Want to **contribute** to this project? Check out the [contributing guidelines](docs/CONTRIBUTING.md).
 
-Increment the version number following semantic versioning[^3] in `src/TOOL_NAME/VERSION`
+## References
 
-[^3]: semantic versioning guidelines https://semver.org/
+This repo was originally generated from the [CCBR Nextflow Template](https://github.com/CCBR/CCBR_NextflowTemplate).
+The template takes inspiration from nektool[^1] and the nf-core template.
+If you plan to contribute your pipeline to nf-core, don't use this template -- instead follow nf-core's instructions[^2].
 
-### Changelog
-
-Keep the changelog up to date with any user-facing changes in `docs/CHANGELOG.md`
+[^1]: nektool https://github.com/beardymcjohnface/nektool
+[^2]: instructions for nf-core pipelines https://nf-co.re/docs/contributing/tutorials/creating_with_nf_core

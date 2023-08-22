@@ -14,7 +14,8 @@ import click
 
 
 def nek_base(rel_path):
-    return os.path.join(os.path.dirname(os.path.realpath(__file__)), rel_path)
+    basedir = os.path.split(os.path.dirname(os.path.realpath(__file__)))[0]
+    return os.path.join(basedir, rel_path)
 
 
 def get_version():
@@ -86,12 +87,6 @@ class OrderedCommands(click.Group):
         return list(self.commands)
 
 
-"""RUN A NEXTFLOW FILE
-Hopefully you shouldn't need to tweak this function at all.
-- You must provide a Nextflow file, all else is optional
-- Highly recommend supplying a params file and a config file"""
-
-
 def run_nextflow(
     paramsfile=None,
     configfile=None,
@@ -110,7 +105,7 @@ def run_nextflow(
         # copy sys default params if needed
         copy_config(
             local_config=paramsfile,
-            system_config=nek_base(os.path.join("workflow", "params.yaml")),
+            system_config=nek_base(os.path.join("params.yaml")),
         )
 
         # read the params
@@ -128,13 +123,14 @@ def run_nextflow(
         msg_box("Runtime parameters", errmsg=yaml.dump(nf_config, Dumper=yaml.Dumper))
 
     if configfile:
-        copy_config(
-            local_config=configfile,
-            system_config=nek_base(os.path.join("workflow", "nextflow.config")),
-        )
+        if not os.path.exists(configfile):
+            copy_config(
+                local_config=configfile,
+                system_config=nek_base(os.path.join("workflow", "nextflow.config")),
+            )
 
         # add threads
-        if threads:
+        if threads:  # when threads=None, uses max available
             append_config_block(scope="executor", cpus=threads)
 
         # Use conda

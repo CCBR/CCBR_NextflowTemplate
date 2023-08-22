@@ -1,4 +1,4 @@
-## TOOL_NAME v0.1.0.apha
+## TOOL_NAME development version
 
 ### API-breaking changes
 

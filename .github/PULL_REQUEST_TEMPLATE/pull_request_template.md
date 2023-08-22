@@ -1,19 +1,22 @@
 ---
 
 name: Pull Request report
-about: Create a Pull Request for the pipeline
+about: Create a Pull Request
 title: ''
 labels: ''
 assignees: ''
 
-**Overview of the Request**
-Provide a summary of what is included in this Pull Request
+## Changes
 
-**Issues**
-Reference any issues that were included in this request.
+Provide a summary of what is included in this Pull Request (PR).
 
-**Reviewers**
-Use the @ feature to mention anyone responsible for reviewing/completing this request.
+## Issues
+
+Reference any issues related to this PR.
+If this PR fixes any issues, [use a keyword](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)
+when referring to the issue.
+
+**Reviewers**: Use the @ feature to mention anyone responsible for reviewing/completing this request.
 
 ## Checklist
 
@@ -21,4 +24,4 @@ Use the @ feature to mention anyone responsible for reviewing/completing this re
 
 - [ ] Write unit tests for any new features or bug fixes.
 - [ ] Update docs if there are any API changes.
-- [ ] Update the changelog if this includes any user-facing changes.
+- [ ] Update the changelog with a one-line description of these changes and reference the PR number.

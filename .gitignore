@@ -28,7 +28,6 @@ replay_pid*
 work/
 data/
 results/
-/nextflow.config
 /params.yaml
 
 # python packaging
@@ -37,3 +36,7 @@ results/
 
 # macOS
 .DS_Store
+
+# code editors
+.vscode/
+*.code-workspace
