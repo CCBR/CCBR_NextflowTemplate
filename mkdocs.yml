@@ -99,6 +99,7 @@ nav:
       - 4. Expected Output: user-guide/output.md
       - 5. Running Test Data: user-guide/test-info.md
   - FAQ:
-      - Troubleshooting: user-guide/troubleshooting.md
-      - Contributions: user-guide/contributions.md
+      - Troubleshooting: troubleshooting.md
+      - How to contribute: CONTRIBUTING.md
+      - Contributors: contributors.md
   - Changelog: CHANGELOG.md
