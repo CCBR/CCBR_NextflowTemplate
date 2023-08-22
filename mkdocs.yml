@@ -1,5 +1,5 @@
 # Project Information
-site_name: TOOL_NAME Pipeline
+site_name: TOOL_NAME
 site_author: CCR Collaborative Bioinformatics Resource
 site_description: >-
   insert a one-line description of TOOL_NAME here
@@ -9,7 +9,7 @@ repo_url: https://github.com/CCBR/TOOL_NAME
 edit_uri: https://github.com/CCBR/TOOL_NAME/edit/main/docs/
 
 # Copyright
-copyright: Copyright &copy; 2023 CCBR
+copyright: Copyright &copy; 2023 CCR Collaborative Bioinformatics Resource
 
 # Configuration
 theme:
