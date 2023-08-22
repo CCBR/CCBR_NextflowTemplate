@@ -42,7 +42,7 @@ CCBR template for creating Nextflow pipelines <!-- replace this line with the de
      mkdocs will build your site under the `gh-pages` branch, and GitHub Pages will make it available at `https://ccbr.github.io/TOOL_NAME`.
 1. Edit the README:
    1. Change the title and description.
-   1. Delete the "Using this template" section.
+   1. Delete the section [Using this template](README.md##using-this-template).
 
 You can look for instances of `TOOL_NAME` in case you missed any with grep:
 
