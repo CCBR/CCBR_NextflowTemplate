@@ -33,6 +33,7 @@ results/
 # python packaging
 *.pyc
 *.egg-info
+/build
 
 # macOS
 .DS_Store

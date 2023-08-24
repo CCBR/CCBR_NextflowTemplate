@@ -1,8 +1,9 @@
 recursive-include src
-recursive-include conf *
-recursive-include modules *
+recursive-include conf
+recursive-include modules
+include CITATION
 include LICENSE
 include VERSION
-include CITATION
+include README.md
 include main.nf
 include nextflow.conf

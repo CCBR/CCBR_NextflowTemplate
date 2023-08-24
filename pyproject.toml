@@ -8,10 +8,12 @@ build-backend = 'setuptools.build_meta'
 [project]
 name = 'TOOL_NAME'
 dynamic = ['version','readme']
-description = "One-line description of your tool."
+description = "One-line description of your tool"
 keywords = ["bioinformatics", "nextflow"]
 authors = [
-    {name = "Firstname Lastname", email = "you@email.com"}
+    {name = "Firstname Lastname", email = "you@email.com"},
+    {name = "Kelly Sovacool", email = "kelly.sovacool@nih.gov"},
+    {name = "Vishal Koparde", email = "vishal.koparde@nih.gov"},
 ]
 maintainers = [
     {name = "CCR Collaborative Bioinformatics Resource", email = "ccbr@mail.nih.gov"},
@@ -47,7 +49,7 @@ test = [
 ]
 
 [project.scripts]
-tool_name = "tool_name.__main__:main"
+tool_name = "tool_name.src.__main__:main"
 
 [project.urls]
 Homepage = "https://ccbr.github.io/TOOL_NAME"
@@ -56,7 +58,10 @@ Repository = "https://github.com/CCBR/TOOL_NAME"
 Changelog = "https://github.com/CCBR/TOOL_NAME/blob/main/docs/CHANGELOG.md"
 
 [tool.setuptools.package-dir]
-tool_name = "src"
+tool_name = "."
+
+[tool.setuptools.package-data]
+"*" = ["CITATION", "LICENSE", "VERSION", "main.nf", "nextflow.conf", "conf/*"]
 
 [tool.setuptools.dynamic]
 version = {file = "src/VERSION"}
