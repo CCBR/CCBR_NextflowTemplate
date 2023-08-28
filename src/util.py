@@ -25,7 +25,7 @@ def get_version():
 
 
 def print_citation():
-    with open(nek_base("CITATION"), "r") as f:
+    with open(nek_base("CITATION.cff"), "r") as f:
         for line in f:
             click.echo(line, nl=False, err=True)
 

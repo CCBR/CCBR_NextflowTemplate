@@ -22,7 +22,7 @@ CCBR template for creating Nextflow pipelines <!-- replace this line with the de
    <!-- `grep -irl tool_name * | sort` -->
 
    ```
-   CITATION
+   CITATION.cff
    README.md
    docs/CHANGELOG.md
    main.nf

@@ -120,13 +120,15 @@ def config(configfile, **kwargs):
 
 @click.command()
 def citation(**kwargs):
-    """Print the citation(s) for this tool"""
+    """Print the citation for this tool"""
     print_citation()
 
 
 cli.add_command(run)
 cli.add_command(config)
-# cli.add_command(citation) # TODO uncomment if tool_name is published in a journal or Zenodo
+
+# TODO uncomment the line below if TOOL_NAME is published in a journal or Zenodo
+# cli.add_command(citation)
 
 
 def main():

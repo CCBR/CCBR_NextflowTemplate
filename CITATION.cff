@@ -1,0 +1,12 @@
+cff-version: 1.1.0
+message: "Please cite TOOL_NAME as below." # TODO set up Zenodo to archive your tool and assign a DOI. Or if TOOL_NAME gets published in a journal, include the citation here.
+authors: # TODO: author names should match those in pyproject.toml
+  - family-names: LASTNAME1
+    given-names: FIRSTNAME1
+  - family-names: Sovacool
+    given-names: Kelly
+  - family-names: Koparde
+    given-names: Vishal
+title: "TOOL_NAME: insert one-line description here" # TODO: citation title should match pyproject.toml
+version: 0.1.0 # TODO: this should be the same as in the VERSION file
+date-released: 2023-08-28 # TODO update release date
