@@ -1,5 +1,6 @@
 default_install_hook_types: [pre-commit, commit-msg]
 default_stages: [pre-commit]
+exclude: ^assets/
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v1.2.3
@@ -13,10 +14,6 @@ repos:
     hooks:
       - id: codespell
         # https://github.com/codespell-project/codespell/issues/1498
-        exclude: >
-          (?x)^(
-              .*\.html
-          )$
   # Python formatting
   - repo: https://github.com/psf/black
     rev: 23.7.0
