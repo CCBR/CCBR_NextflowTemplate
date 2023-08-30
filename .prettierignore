@@ -5,3 +5,4 @@ data/
 results/
 .DS_Store
 *.code-workspace
+assets/*.html

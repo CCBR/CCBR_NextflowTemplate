@@ -26,31 +26,14 @@ def common_options(func):
             help="Custom config file",
             show_default=True,
         ),
+        click.option(
+            "--paramsfile", default=None, help="Custom params file", show_default=True
+        ),
         click.option(  # when threads=None, uses max available
             "--threads",
             help="Number of threads to use",
             default=None,
             show_default=True,
-        ),
-        click.option(
-            "--use-conda/--no-use-conda",
-            default=False,
-            help="Use conda for Nextflow processes",
-            show_default=True,
-        ),
-        click.option(
-            "--conda-frontend",
-            type=click.Choice(["mamba", "conda"], case_sensitive=True),
-            default="mamba",
-            help="Specify Conda frontend",
-            show_default=True,
-        ),
-        click.option(
-            "--conda-prefix",
-            default=nek_base(os.path.join("conda")),
-            help="Custom conda env directory",
-            type=click.Path(),
-            show_default=False,
         ),
         click.argument("nextflow_args", nargs=-1),
     ]
@@ -64,7 +47,7 @@ def common_options(func):
 )
 @click.version_option(get_version(), "-v", "--version", is_flag=True)
 def cli():
-    """CHromAtin iMmuno PrecipitAtion sequencinG aNalysis pipEline
+    """TOOL_NAME description TODO
 
     For more options, run:
     tool_name [command] --help"""
@@ -81,7 +64,6 @@ https://www.nextflow.io/docs/latest/config.html#config-profiles
 RUN EXAMPLES:
 Use singularity:    tool_name run ... -profile singularity
 Specify threads:    tool_name run ... --threads [threads]
-Enable conda:       tool_name run ... --use-conda
 Add NextFlow args:  tool_name run ... -work-dir workDir -with-docker
 """
 
@@ -112,23 +94,23 @@ def run(**kwargs):
 )
 def config(configfile, **kwargs):
     """Copy the system default config files"""
-    copy_config(
-        local_config=configfile,
-        system_config=nek_base(os.path.join("workflow", "nextflow.config")),
-    )
+    for filename in ("nextflow.config", "params.yml"):
+        if os.path.exists(nek_base(filename)):
+            copy_config(
+                local_config=configfile,
+                system_config=nek_base(filename),
+            )
 
 
 @click.command()
 def citation(**kwargs):
-    """Print the citation for this tool"""
+    """Print the citation"""
     print_citation()
 
 
 cli.add_command(run)
 cli.add_command(config)
-
-# TODO uncomment the line below if TOOL_NAME is published in a journal or Zenodo
-# cli.add_command(citation)
+# cli.add_command(citation) # TODO uncomment if tool_name is published in a journal or Zenodo
 
 
 def main():

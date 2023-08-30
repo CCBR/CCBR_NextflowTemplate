@@ -8,10 +8,9 @@ build-backend = 'setuptools.build_meta'
 [project]
 name = 'TOOL_NAME'
 dynamic = ['version','readme']
-description = "One-line description of your tool"
+description = "TODO insert description of TOOL_NAME here"
 keywords = ["bioinformatics", "nextflow"]
 authors = [
-    {name = "Firstname Lastname", email = "you@email.com"},
     {name = "Kelly Sovacool", email = "kelly.sovacool@nih.gov"},
     {name = "Vishal Koparde", email = "vishal.koparde@nih.gov"},
 ]
@@ -62,7 +61,7 @@ Changelog = "https://github.com/CCBR/TOOL_NAME/blob/main/docs/CHANGELOG.md"
 tool_name = "."
 
 [tool.setuptools.package-data]
-"*" = ["CITATION.cff", "LICENSE", "VERSION", "main.nf", "nextflow.conf", "conf/*"]
+"*" = ["CITATION.cff", "LICENSE", "VERSION", "main.nf", "nextflow.conf", "bin/", "conf/", "modules/*/*", "submodules/*/*"]
 
 [tool.setuptools.dynamic]
 version = {file = "src/VERSION"}
