@@ -1,4 +1,4 @@
-name: Bug report
+mname: Bug report
 description: Report something that is broken or incorrect
 labels: bug
 body:
