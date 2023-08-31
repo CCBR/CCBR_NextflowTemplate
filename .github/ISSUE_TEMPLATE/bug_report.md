@@ -1,4 +1,3 @@
----
 name: Bug report
 description: Report something that is broken or incorrect
 labels: bug
@@ -49,4 +48,3 @@ body:
         * Container engine: _(e.g. Docker, Singularity)_
         * OS _(eg. Ubuntu Linux, macOS)_
         * Version of CCBR/TOOL_NAME _(eg. 1.0, 1.8.2)_
----
