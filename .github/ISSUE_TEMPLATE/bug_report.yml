@@ -7,7 +7,7 @@ body:
       value: |
         Before you post this issue, please check the documentation:
 
-        - [pipeline documentation: troubleshooting](https://ccbr.github.io/CCBR_NextflowTemplate/troubleshooting/) # TODO replace CCBR_NextflowTemplate in this link with TOOL_NAME
+        - [pipeline documentation: troubleshooting](https://ccbr.github.io/CCBR_NextflowTemplate/user-guide/troubleshooting/) <!--TODO replace CCBR_NextflowTemplate in this link with TOOL_NAME-->
 
   - type: textarea
     id: description
