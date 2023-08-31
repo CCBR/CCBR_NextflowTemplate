@@ -98,8 +98,8 @@ nav:
       - 3. Running the Pipeline: user-guide/run.md
       - 4. Expected Output: user-guide/output.md
       - 5. Running Test Data: user-guide/test-info.md
+      - Troubleshooting: user-guide/troubleshooting.md
   - FAQ:
-      - Troubleshooting: troubleshooting.md
-      - How to contribute: CONTRIBUTING.md
+      - How to contribute: contributing.md
       - Contributors: contributors.md
-  - Changelog: CHANGELOG.md
+  - Changelog: changelog.md
