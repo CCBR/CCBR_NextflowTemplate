@@ -1,4 +1,3 @@
----
 name: Feature request
 description: Suggest an idea for the pipeline
 labels: enhancement
@@ -10,4 +9,3 @@ body:
       description: Please describe your suggestion for a new feature. It might help to describe a problem or use case, plus any alternatives that you have considered.
     validations:
       required: true
----
