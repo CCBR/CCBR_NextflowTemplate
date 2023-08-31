@@ -19,9 +19,11 @@ CCBR template for creating Nextflow pipelines <!-- replace this line with the de
    Be sure to [install `pre-commit` and its hooks](docs/CONTRIBUTING.md#use-pre-commit-hooks) before making any commits.
 1. Change all instances of `TOOL_NAME` and `tool_name` throughout the repo with the actual tool name. Replace `TOOL_NAME` with the all-caps version and `tool_name` with the lowercase version. Places include:
 
-   <!-- `grep -irl tool_name * | sort` -->
+   <!-- `grep -irl tool_name . | sort | sed "s|\./||"` -->
 
    ```
+   .github/ISSUE_TEMPLATE/bug_report.md
+   .github/ISSUE_TEMPLATE/config.yml
    CITATION.cff
    README.md
    docs/CHANGELOG.md
@@ -47,7 +49,7 @@ CCBR template for creating Nextflow pipelines <!-- replace this line with the de
 You can look for instances of `TOOL_NAME` in case you missed any with grep:
 
 ```sh
-grep -ir "TOOL_NAME" *
+grep -ir "TOOL_NAME" .
 ```
 
 For a work-in-progress example of this template in action, see the [CHAMPAGNE](https://github.com/CCBR/CHAMPAGNE) repo.

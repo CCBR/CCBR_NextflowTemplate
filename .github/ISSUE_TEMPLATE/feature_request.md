@@ -1,13 +1,13 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: ""
-labels: ""
-assignees: ""
+description: Suggest an idea for the pipeline
+labels: enhancement
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of feature
+      description: Please describe your suggestion for a new feature. It might help to describe a problem or use case, plus any alternatives that you have considered.
+    validations:
+      required: true
 ---
-
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
-
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen. If there are alternative solutions or features you've considered, please include these!
