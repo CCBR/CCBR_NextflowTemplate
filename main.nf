@@ -19,7 +19,10 @@ reads        : ${params.reads}
 include { FASTQC } from "./modules/local/qc.nf"
 
 workflow qc {
-    FASTQC(params.input)
+    raw_fastqs = Channel
+                .fromPath(params.input)
+                .map { file -> tuple(file.simpleName, file) }
+    raw_fastqs | FASTQC
 }
 
 process yeet {
