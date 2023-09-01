@@ -6,10 +6,11 @@ CCBR template for creating Nextflow pipelines <!-- replace this line with the de
 
 1. Create a new repository from this template using either of these options:
    - [**The GitHub web interface**](https://github.com/CCBR/CCBR_NextflowTemplate):
-     Click "Use this template" and "Create a new repository", then choose an owner (CCBR) and the repository name as the new tool's name.
+     Click "Use this template" and "Create a new repository", then choose an owner (e.g. CCBR or another organization) and the repository name as the new tool's name.
    - [**The GitHub command line interface**](https://cli.github.com/):
+     Replace `OWNER/TOOL_NAME` with your organization (e.g. CCBR) and the actual tool name.
      ```sh
-     gh repo create CCBR/TOOL_NAME \
+     gh repo create OWNER/TOOL_NAME \
         --description "One-line description of your tool" \
         --public \
         --template CCBR/CCBR_NextflowTemplate \
@@ -17,7 +18,9 @@ CCBR template for creating Nextflow pipelines <!-- replace this line with the de
      ```
 1. Read and follow the contributing guidelines in `.github/CONTRIBUTING.md`.
    Be sure to [install `pre-commit` and its hooks](.github/CONTRIBUTING.md#use-pre-commit-hooks) before making any commits.
-1. Change all instances of `TOOL_NAME` and `tool_name` throughout the repo with the actual tool name. Replace `TOOL_NAME` with the all-caps version and `tool_name` with the lowercase version. Places include:
+1. Change all instances of `TOOL_NAME` and `tool_name` throughout the repo with the actual tool name.
+   Replace `TOOL_NAME` with the all-caps version (refers to the GitHub repo name)
+   and `tool_name` with the lowercase version (refers to the command-line interface). Places include:
 
    <!--
    grep -irl tool_name . | sort | sed "s|\./||"
@@ -44,16 +47,21 @@ CCBR template for creating Nextflow pipelines <!-- replace this line with the de
 1. Write your nextflow workflow.
 1. Write your documentation in `docs/` and enable GitHub Pages.
    - In settings, go to General > Pages and select the `gh-pages` branch.
-     mkdocs will build your site under the `gh-pages` branch, and GitHub Pages will make it available at `https://ccbr.github.io/TOOL_NAME`.
+     mkdocs will build your site under the `gh-pages` branch, and GitHub Pages will make it available at `https://OWNER.github.io/TOOL_NAME`.
 1. Edit the README:
    1. Change the title and description.
    1. Delete the section [Using this template](README.md##using-this-template).
+1. You can look for instances of `TOOL_NAME` in case you missed any with grep:
 
-You can look for instances of `TOOL_NAME` in case you missed any with grep:
+   ```sh
+   grep -ir "TOOL_NAME" .
+   ```
 
-```sh
-grep -ir "TOOL_NAME" .
-```
+   If your repo is not part of CCBR, you will also want to look for instances of "CCBR" and "CCR Collaborative Bioinformatics Resource" and replace them with your organization.
+
+   ```sh
+   grep -ir "CCBR\|CCR" .
+   ```
 
 For a work-in-progress example of this template in action, see the [CHAMPAGNE](https://github.com/CCBR/CHAMPAGNE) repo.
 
