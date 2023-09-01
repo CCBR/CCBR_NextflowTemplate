@@ -16,6 +16,12 @@ reads        : ${params.reads}
 """
 .stripIndent()
 
+include { FASTQC } from "./modules/local/qc.nf"
+
+workflow qc {
+    FASTQC(params.input)
+}
+
 process yeet {
     output:
     stdout
