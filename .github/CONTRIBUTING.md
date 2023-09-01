@@ -12,13 +12,15 @@ Pre-commit will run the hooks every time you commit.
 
 ## Versions
 
-Increment the version number following semantic versioning[^3] in the `VERSION` file.
+Increment the version number following semantic versioning[^1] in the `VERSION` file.
 
-[^3]: semantic versioning guidelines https://semver.org/
+[^1]: semantic versioning guidelines https://semver.org/
 
 ## Changelog
 
-Keep the changelog up to date with all changes in `docs/CHANGELOG.md`.
+Keep the changelog up to date with all notable changes in `CHANGELOG.md`[^2].
+
+[^2]: changelog guidelines: https://keepachangelog.com/en/1.1.0/
 
 ## VS code extensions
 
