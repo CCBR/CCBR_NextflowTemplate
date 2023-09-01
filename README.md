@@ -15,18 +15,21 @@ CCBR template for creating Nextflow pipelines <!-- replace this line with the de
         --template CCBR/CCBR_NextflowTemplate \
         --confirm
      ```
-1. Read and follow the contributing guidelines in `docs/CONTRIBUTING.md`.
-   Be sure to [install `pre-commit` and its hooks](docs/CONTRIBUTING.md#use-pre-commit-hooks) before making any commits.
+1. Read and follow the contributing guidelines in `.github/CONTRIBUTING.md`.
+   Be sure to [install `pre-commit` and its hooks](.github/CONTRIBUTING.md#use-pre-commit-hooks) before making any commits.
 1. Change all instances of `TOOL_NAME` and `tool_name` throughout the repo with the actual tool name. Replace `TOOL_NAME` with the all-caps version and `tool_name` with the lowercase version. Places include:
 
-   <!-- `grep -irl tool_name . | sort | sed "s|\./||"` -->
+   <!--
+   grep -irl tool_name . | sort | sed "s|\./||"
+   -->
 
    ```
-   .github/ISSUE_TEMPLATE/bug_report.md
+   .github/CONTRIBUTING.md
+   .github/ISSUE_TEMPLATE/bug_report.yml
    .github/ISSUE_TEMPLATE/config.yml
+   CHANGELOG.md
    CITATION.cff
    README.md
-   docs/CHANGELOG.md
    main.nf
    mkdocs.yml
    nextflow.config
