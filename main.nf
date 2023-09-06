@@ -12,7 +12,7 @@ projectDir   : $workflow.projectDir
 launchDir    : $workflow.launchDir
 workDir      : $workflow.workDir
 homeDir      : $workflow.homeDir
-reads        : ${params.reads}
+input        : ${params.input}
 """
 .stripIndent()
 
