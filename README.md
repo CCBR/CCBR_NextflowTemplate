@@ -1,6 +1,8 @@
-# Nextflow Template <!-- replace this header with TOOL_NAME -->
+# Nextflow Template <!-- TODO: replace this header with TOOL_NAME -->
 
-CCBR template for creating Nextflow pipelines <!-- replace this line with the description of TOOL_NAME -->
+CCBR template for creating Nextflow pipelines <!-- TODO: replace this line with the description of TOOL_NAME -->
+
+[![build](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build.yml) <!-- TODO: replace CCBR/CCBR_NextflowTemplate with your OWNER/TOOL_NAME -->
 
 ## Using this template
 
@@ -30,6 +32,7 @@ CCBR template for creating Nextflow pipelines <!-- replace this line with the de
    .github/CONTRIBUTING.md
    .github/ISSUE_TEMPLATE/bug_report.yml
    .github/ISSUE_TEMPLATE/config.yml
+   .github/workflows/build.yml
    CHANGELOG.md
    CITATION.cff
    README.md
