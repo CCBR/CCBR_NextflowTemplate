@@ -106,6 +106,14 @@ class OrderedCommands(click.Group):
         return list(self.commands)
 
 
+def is_biowulf():
+    is_biowulf = False
+    for env_var in ("HOSTNAME", "SLURM_SUBMIT_HOST"):
+        if env_var in os.environ.keys() and os.environ[env_var] == "biowulf.nih.gov":
+            is_biowulf = True
+    return is_biowulf
+
+
 def run_nextflow(
     paramsfile=None,
     configfile=None,
@@ -159,7 +167,7 @@ def run_nextflow(
 
     # Run Nextflow!!!
     nextflow_command = " ".join(str(nf) for nf in nextflow_command)
-    if os.environ["HOSTNAME"] == "biowulf.nih.gov":
+    if is_biowulf():
         nextflow_command = f'bash -c "module load nextflow && {nextflow_command}"'
     msg_box("Nextflow command", errmsg=nextflow_command)
     subprocess.run(nextflow_command, shell=True, check=True)
