@@ -1,7 +1,8 @@
 
 process FASTQC {
     tag { sample_id }
-    publishDir "$params.outdir/$sample_id/qc/", mode: 'copy'
+
+    container "${params.containers.base}"
 
     input:
         tuple val(sample_id), path(fastq)
