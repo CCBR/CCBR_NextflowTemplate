@@ -21,6 +21,7 @@ when referring to the issue.
 (~Strikethrough~ any points that are not applicable.)
 
 - [ ] This comment contains a description of changes with justifications, with any relevant issues linked.
-- [ ] Write unit tests for any new features, bug fixes, or other code changes.
-- [ ] Update docs if there are any API changes.
-- [ ] Update `CHANGELOG.md` with a one-line description of these changes and reference the PR number. Guidelines: https://keepachangelog.com/en/1.1.0/
+- ~[ ] Write unit tests for any new features, bug fixes, or other code changes.~ _testing framework not yet implemented_
+- ~[ ] Update docs if there are any API changes.~ _on hold until before public release_
+- [ ] If a new nextflow process is implemented, define the process `container` and `stub`.
+- [ ] Update `CHANGELOG.md` with a short description of any user-facing changes and reference the PR number. Guidelines: https://keepachangelog.com/en/1.1.0/
