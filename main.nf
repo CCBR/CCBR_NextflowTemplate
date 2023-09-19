@@ -26,6 +26,8 @@ workflow qc {
 }
 
 process yeet {
+    container "${params.containers.base}"
+
     output:
     stdout
 
