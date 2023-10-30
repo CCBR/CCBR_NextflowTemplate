@@ -10,6 +10,9 @@ Install [pre-commit](https://pre-commit.com/#installation) if you haven't alread
 then run `pre-commit install` to install the hooks specified in `.pre-commit-config.yaml`.
 Pre-commit will run the hooks every time you commit.
 
+If you re-clone the repo, you will likely need to re-run `pre-commit install`
+as the hooks are installed to the local repo's `.git/hooks` directory.
+
 ## Versions
 
 Increment the version number following semantic versioning[^1] in the `VERSION` file.
