@@ -18,6 +18,15 @@ input        : ${params.input}
 
 include { FASTQC } from "./modules/local/qc.nf"
 
+workflow.onComplete {
+    if (!workflow.stubRun && !workflow.commandLine.contains('-preview')) {
+        def message = Utils.spooker(workflow)
+        if (message) {
+            println message
+        }
+    }
+}
+
 workflow qc {
     raw_fastqs = Channel
                 .fromPath(params.input)
