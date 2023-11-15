@@ -1,13 +1,13 @@
-import sys
-import os
-import subprocess
-import yaml
-import collections.abc
-from shutil import copyfile
-import stat
 from time import localtime, strftime
-
 import click
+import collections.abc
+import os
+import pprint
+import shutil
+import stat
+import subprocess
+import sys
+import yaml
 
 
 def nek_base(rel_path):
@@ -48,9 +48,16 @@ def append_config_block(nf_config="nextflow.config", scope=None, **kwargs):
         f.write("}\n")
 
 
-def copy_config(local_config=None, system_config=None):
-    msg(f"Copying system default config to {local_config}")
-    copyfile(system_config, local_config)
+def copy_config(config_paths, overwrite=True):
+    msg(f"Copying default config files to current working directory")
+    for local_config in config_paths:
+        system_config = nek_base(local_config)
+        if os.path.isfile(system_config):
+            shutil.copyfile(system_config, local_config)
+        elif os.path.isdir(system_config):
+            shutil.copytree(system_config, local_config, dirs_exist_ok=overwrite)
+        else:
+            raise FileNotFoundError(f"Cannot copy {system_config} to {local_config}")
 
 
 def read_config(file):
@@ -106,68 +113,92 @@ class OrderedCommands(click.Group):
         return list(self.commands)
 
 
-def is_biowulf():
-    is_biowulf = False
-    for env_var in ("HOSTNAME", "SLURM_SUBMIT_HOST"):
-        if env_var in os.environ.keys() and os.environ[env_var] == "biowulf.nih.gov":
-            is_biowulf = True
-    return is_biowulf
+def scontrol_show():
+    scontrol_dict = dict()
+    scontrol_out = subprocess.run(
+        "scontrol show config", shell=True, capture_output=True, text=True
+    ).stdout
+    if len(scontrol_out) > 0:
+        for line in scontrol_out.split("\n"):
+            line_split = line.split("=")
+            if len(line_split) > 1:
+                scontrol_dict[line_split[0].strip()] = line_split[1].strip()
+    return scontrol_dict
+
+
+hpc_options = {
+    "biowulf": {"profile": "biowulf", "slurm": "assets/slurm_header_biowulf.sh"},
+    "fnlcr": {
+        "profile": "frce",
+        "slurm": "assets/slurm_header_frce.sh",
+    },
+}
+
+
+def get_hpc():
+    scontrol_out = scontrol_show()
+    if "ClusterName" in scontrol_out.keys():
+        hpc = scontrol_out["ClusterName"]
+    else:
+        hpc = None
+    return hpc
 
 
 def run_nextflow(
-    paramsfile=None,
-    configfile=None,
     nextfile_path=None,
     merge_config=None,
     threads=None,
     nextflow_args=None,
+    mode="local",
 ):
-    """Run a Nextflow workfile"""
+    """Run a Nextflow workflow"""
     nextflow_command = ["nextflow", "run", nextfile_path]
-
-    if paramsfile:
-        # copy sys default params if needed
-        copy_config(
-            local_config=paramsfile,
-            system_config=nek_base("params.yaml"),
-        )
-        # read the params
-        nf_config = read_config(paramsfile)
-        # merge in command line params if provided
-        if merge_config:
-            update_config(nf_config, merge_config)
-        # update params file
-        write_config(nf_config, paramsfile)
-        nextflow_command += ["-params-file", paramsfile]
-        # display the runtime params
-        msg_box("Runtime parameters", errmsg=yaml.dump(nf_config, Dumper=yaml.Dumper))
-
-    if configfile:
-        if not os.path.exists(configfile):
-            copy_config(
-                local_config=configfile,
-                system_config=nek_base("nextflow.config"),
-            )
-
-        # add threads
-        if threads:  # when threads=None, uses max available
-            append_config_block(scope="executor", cpus=threads)
-
-        nextflow_command += ["-c", configfile]
-
-        # display the runtime configuration
-        # msg_box("Launcher Configuration", errmsg=open(configfile, "r").read()) # TODO verbose flag to toggle printing config?
-
-    # add any additional Nextflow commands
-    if nextflow_args:
-        nextflow_command += list(nextflow_args)
-
     # make sure bins are executable for nextflow processes
     chmod_bins_exec()
 
-    # Run Nextflow!!!
+    hpc = get_hpc()
+    if mode == "slurm" and not hpc:
+        raise ValueError("mode is 'slurm' but no HPC environment was detected")
+    # add any additional Nextflow commands
+    args_dict = dict()
+    prev_arg = ""
+    for arg in nextflow_args:
+        if arg.startswith("-"):
+            args_dict[arg] = ""
+        elif prev_arg.startswith("-"):
+            args_dict[prev_arg] = arg
+        prev_arg = arg
+    # make sure profile matches biowulf or frce
+    profiles = (
+        set(args_dict["-profile"].split(","))
+        if "-profile" in args_dict.keys()
+        else set()
+    )
+    if mode == "slurm":
+        profiles.add("slurm")
+    if hpc:
+        profiles.add(hpc_options[hpc]["profile"])
+    if profiles:
+        args_dict["-profile"] = ",".join(sorted(profiles))
+    nextflow_command += list(f"{k} {v}" for k, v in args_dict.items())
+
+    # Print nextflow command
     nextflow_command = " ".join(str(nf) for nf in nextflow_command)
-    if is_biowulf():
-        nextflow_command = f'bash -c "module load nextflow && {nextflow_command}"'
     msg_box("Nextflow command", errmsg=nextflow_command)
-    subprocess.run(nextflow_command, shell=True, check=True)
+
+    if mode == "slurm":
+        slurm_filename = "submit_slurm.sh"
+        with open(slurm_filename, "w") as sbatch_file:
+            with open(nek_base(hpc_options[hpc]["slurm"]), "r") as template:
+                sbatch_file.writelines(template.readlines())
+            sbatch_file.write(nextflow_command)
+        run_command = f"sbatch {slurm_filename}"
+        msg_box("Slurm batch job", errmsg=run_command)
+    elif mode == "local":
+        if hpc:
+            nextflow_command = f'bash -c "module load nextflow && {nextflow_command}"'
+        run_command = nextflow_command
+    else:
+        raise ValueError(f"mode {mode} not recognized")
+    # Run Nextflow!!!
+    subprocess.run(run_command, shell=True, check=True)
