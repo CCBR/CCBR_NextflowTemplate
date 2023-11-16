@@ -153,8 +153,6 @@ def run_nextflow(
 ):
     """Run a Nextflow workflow"""
     nextflow_command = ["nextflow", "run", nextfile_path]
-    # make sure bins are executable for nextflow processes
-    chmod_bins_exec()
 
     hpc = get_hpc()
     if mode == "slurm" and not hpc:
