@@ -60,7 +60,7 @@ Changelog = "https://github.com/CCBR/TOOL_NAME/blob/main/CHANGELOG.md"
 tool_name = "."
 
 [tool.setuptools.package-data]
-"*" = ["CITATION.cff", "LICENSE", "VERSION", "main.nf", "nextflow.config", "assets/**", "bin/**", "conf/**", "lib/**", "modules/**", "subworkflows/**", "tests/**"]
+"*" = ["CITATION.cff", "LICENSE", "VERSION", "main.nf", "nextflow.config", "assets/**", "bin/**", "conf/**", "lib/**", "modules/**", "subworkflows/**", "workflows/**", "tests/**"]
 
 [tool.setuptools.dynamic]
 version = {file = "src/VERSION"}
