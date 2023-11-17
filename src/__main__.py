@@ -31,7 +31,13 @@ def common_options(func):
     cls=OrderedCommands, context_settings=dict(help_option_names=["-h", "--help"])
 )
 @click.version_option(get_version(), "-v", "--version", is_flag=True)
-@click.option("--citation", is_flag=True, callback=print_citation, expose_value=False)
+@click.option(
+    "--citation",
+    is_flag=True,
+    callback=print_citation,
+    expose_value=False,
+    help="Print the citation in bibtex format and exit.",
+)
 def cli():
     """TODO oneline description of TOOL_NAME
 
