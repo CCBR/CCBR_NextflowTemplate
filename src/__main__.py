@@ -32,7 +32,7 @@ def common_options(func):
 )
 @click.version_option(get_version(), "-v", "--version", is_flag=True)
 def cli():
-    """CHromAtin iMmuno PrecipitAtion sequencinG aNalysis pipEline
+    """TODO oneline description of TOOL_NAME
 
     For more options, run:
     tool_name [command] --help"""
