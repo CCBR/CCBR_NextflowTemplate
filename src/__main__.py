@@ -31,6 +31,7 @@ def common_options(func):
     cls=OrderedCommands, context_settings=dict(help_option_names=["-h", "--help"])
 )
 @click.version_option(get_version(), "-v", "--version", is_flag=True)
+@click.option("--citation", is_flag=True, callback=print_citation, expose_value=False)
 def cli():
     """TODO oneline description of TOOL_NAME
 
@@ -105,15 +106,8 @@ def init(**kwargs):
         os.mkdir("log/")
 
 
-@click.command()
-def citation(**kwargs):
-    """Print the citation"""
-    print_citation()
-
-
 cli.add_command(run)
 cli.add_command(init)
-# cli.add_command(citation) # TODO uncomment if tool_name is published in a journal or Zenodo
 
 
 def main():
