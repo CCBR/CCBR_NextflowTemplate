@@ -63,5 +63,5 @@ tool_name = "."
 "*" = ["CITATION.cff", "LICENSE", "VERSION", "main.nf", "nextflow.config", "assets/**", "bin/**", "conf/**", "lib/**", "modules/**", "subworkflows/**", "workflows/**", "tests/**"]
 
 [tool.setuptools.dynamic]
-version = {file = "src/VERSION"}
+version = {file = "VERSION"}
 readme = {file = "README.md"}
