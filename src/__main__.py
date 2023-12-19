@@ -36,6 +36,7 @@ def common_options(func):
     is_flag=True,
     callback=print_citation,
     expose_value=False,
+    is_eager=True,
     help="Print the citation in bibtex format and exit.",
 )
 def cli():

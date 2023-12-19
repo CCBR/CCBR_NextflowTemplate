@@ -25,6 +25,8 @@ def get_version():
 
 
 def print_citation(context, param, value):
+    if not value or context.resilient_parsing:
+        return
     citation = create_citation(nek_base("CITATION.cff"), None)
     # click.echo(citation._implementation.cffobj['message'])
     validate_or_write_output(None, "bibtex", False, citation)
