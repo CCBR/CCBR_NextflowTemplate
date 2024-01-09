@@ -14,3 +14,5 @@ url: https://ccbr.github.io/TOOL_NAME/
 repository-code: https://github.com/CCBR/TOOL_NAME
 license: MIT
 type: software
+version: # TODO update the version here just before cutting a new release
+date-released: # TODO update the release date just before cutting a new release
