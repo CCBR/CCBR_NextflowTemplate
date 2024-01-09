@@ -13,3 +13,4 @@ title: "TOOL_NAME: insert one-line description here" # TODO: citation title shou
 url: https://ccbr.github.io/TOOL_NAME/
 repository-code: https://github.com/CCBR/TOOL_NAME
 license: MIT
+type: software
