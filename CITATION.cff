@@ -1,4 +1,4 @@
-cff-version: 1.2.0
+cff-version: 1.2.0 # TODO: view an example cff file from a published tool here: https://github.com/CCBR/nf-modules/blob/main/CITATION.cff
 message: "Please cite TOOL_NAME as below."
 authors: # TODO: author names should match those in pyproject.toml
   - family-names: LASTNAME1 # TODO add your name, orcid, and affiliation
@@ -16,9 +16,9 @@ url: https://ccbr.github.io/TOOL_NAME/ # TODO fix the documentation URL
 repository-code: https://github.com/CCBR/TOOL_NAME # TODO fix the github URL
 license: MIT
 type: software
-#version: # TODO update the version here just before cutting a new release
-#date-released: # TODO update the release date just before cutting a new release
 #identifiers:
 #  - description: "Archived snapshots of all versions"
 #    type: doi
 #    value: # TODO add all-versions DOI from Zenodo here
+#version: # TODO update the version here *before* cutting a new release
+#date-released: # TODO update the release date *before* cutting a new release
