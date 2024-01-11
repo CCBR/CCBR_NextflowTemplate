@@ -1,18 +1,24 @@
 cff-version: 1.2.0
-message: "Please cite TOOL_NAME as below." # TODO set up Zenodo to archive your tool and assign a DOI. Or if TOOL_NAME gets published in a journal, include the citation here.
+message: "Please cite TOOL_NAME as below."
 authors: # TODO: author names should match those in pyproject.toml
-  - family-names: LASTNAME1
+  - family-names: LASTNAME1 # TODO add your name, orcid, and affiliation
     given-names: FIRSTNAME1
   - family-names: Sovacool
     given-names: Kelly
     orcid: https://orcid.org/0000-0003-3283-829X
+    affiliation: Advanced Biomedical Computational Science, Frederick National Laboratory for Cancer Research, Frederick, MD 21702, USA
   - family-names: Koparde
     given-names: Vishal
     orcid: https://orcid.org/0000-0001-8978-8495
+    affiliation: Advanced Biomedical Computational Science, Frederick National Laboratory for Cancer Research, Frederick, MD 21702, USA
 title: "TOOL_NAME: insert one-line description here" # TODO: citation title should match pyproject.toml
-url: https://ccbr.github.io/TOOL_NAME/
-repository-code: https://github.com/CCBR/TOOL_NAME
+url: https://ccbr.github.io/TOOL_NAME/ # TODO fix the documentation URL
+repository-code: https://github.com/CCBR/TOOL_NAME # TODO fix the github URL
 license: MIT
 type: software
-version: # TODO update the version here just before cutting a new release
-date-released: # TODO update the release date just before cutting a new release
+#version: # TODO update the version here just before cutting a new release
+#date-released: # TODO update the release date just before cutting a new release
+#identifiers:
+#  - description: "Archived snapshots of all versions"
+#    type: doi
+#    value: # TODO add all-versions DOI from Zenodo here
