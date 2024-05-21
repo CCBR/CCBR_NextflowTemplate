@@ -19,12 +19,11 @@ repos:
     rev: v2.2.4
     hooks:
       - id: codespell
-        # https://github.com/codespell-project/codespell/issues/1498
+        args: ["--ignore-words-list=entrace"]
         exclude: >
           (?x)^(
               .*\.svg
           )$
-        # https://github.com/codespell-project/codespell/issues/1498
   # Python formatting
   - repo: https://github.com/psf/black
     rev: 23.7.0
