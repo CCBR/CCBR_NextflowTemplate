@@ -33,6 +33,7 @@ CCBR template for creating Nextflow pipelines <!-- TODO: replace this line with 
    .github/ISSUE_TEMPLATE/bug_report.yml
    .github/ISSUE_TEMPLATE/config.yml
    .github/workflows/build.yml
+   bin/tool_name
    CHANGELOG.md
    CITATION.cff
    README.md

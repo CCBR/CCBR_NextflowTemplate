@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# script that allows the CLI to work out-of-the-box
+# without the need to install it via pip first
+
+TOOLDIR=$(realpath $(dirname $(dirname ${BASH_SOURCE})))
+
+${TOOLDIR}/main.py "$@"
