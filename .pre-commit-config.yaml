@@ -11,6 +11,7 @@ repos:
     rev: v1.2.3
     hooks:
       - id: check-added-large-files
+        args: ["--maxkb=10240"]
       - id: end-of-file-fixer
       - id: trailing-whitespace
       - id: check-json
@@ -19,11 +20,7 @@ repos:
     rev: v2.2.4
     hooks:
       - id: codespell
-        args: ["--ignore-words-list=entrace"]
-        exclude: >
-          (?x)^(
-              .*\.svg
-          )$
+        # https://github.com/codespell-project/codespell/issues/1498
   # Python formatting
   - repo: https://github.com/psf/black
     rev: 23.7.0
