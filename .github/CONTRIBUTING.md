@@ -219,6 +219,8 @@ Edit the PR title and description.
 The title should briefly describe the change.
 Follow the comments in the template to fill out the body of the PR, and
 you can delete the comments (everything between `<!--` and `-->`) as you go.
+Be sure to fill out the checklist, checking off items as you complete them or
+striking through any irrelevant items.
 When you're ready, click 'Create pull request' to open it.
 
 ![Open the PR after editing the title and description](./img/create-PR.png)
@@ -254,7 +256,9 @@ start from the most recent commits in main.
 
 ## Helpful links for more information
 
-- This contributing guide was adapted from the [tidyverse contributing guide](https://github.com/tidyverse/tidyverse/blob/main/.github/CONTRIBUTING.md)
 - [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow)
+- [semantic versioning guidelines](https://semver.org/)
+- [changelog guidelines](https://keepachangelog.com/en/1.1.0/)
 - [tidyverse code review principles](https://code-review.tidyverse.org)
 - [reproducible examples](https://www.tidyverse.org/help/#reprex)
+- [nf-core extensions for VS Code](https://marketplace.visualstudio.com/items?itemName=nf-core.nf-core-extensionpack)
