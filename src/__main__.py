@@ -121,5 +121,7 @@ def main():
     cli()
 
 
+cli(prog_name="tool_name")
+
 if __name__ == "__main__":
     main()
