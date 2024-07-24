@@ -31,14 +31,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip setuptools
           pip install .[dev,test]
-      - name: Check out-of-the-box CLI script
-        run: |
-          bash bin/tool_name --help
       - name: Check CLI flags
         run: |
           tool_name --help
           tool_name --version
           tool_name --citation
-      - name: Test stub run
+      - name: Test
+        run: |
+          python -m pytest
+      - name: Stub run
         run: |
           tool_name run -profile ci_stub,docker -stub
