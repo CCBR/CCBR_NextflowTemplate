@@ -91,7 +91,7 @@ Come across a **bug**? Open an [issue](https://github.com/CCBR/TOOL_NAME/issues)
 
 Have a **question**? Ask it in [discussions](https://github.com/CCBR/TOOL_NAME/discussions).
 
-Want to **contribute** to this project? Check out the [contributing guidelines](docs/CONTRIBUTING.md).
+Want to **contribute** to this project? Check out the [contributing guidelines](docs/contributing.md).
 
 ## References
 
