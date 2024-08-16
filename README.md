@@ -2,7 +2,10 @@
 
 CCBR template for creating Nextflow pipelines <!-- TODO: replace this line with the description of TOOL_NAME -->
 
-[![build](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build.yml) <!-- TODO: replace CCBR/CCBR_NextflowTemplate with your OWNER/TOOL_NAME -->
+<!-- TODO: replace CCBR/CCBR_NextflowTemplate in these badge links with your OWNER/TOOL_NAME -->
+
+[![build](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build.yml)
+[![docs](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/docs-mkdocs.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/docs-mkdocs.yml)
 
 ## Using this template
 
@@ -77,10 +80,22 @@ Install the tool in edit mode:
 pip3 install -e .
 ```
 
+View CLI options:
+
+```sh
+tool_name --help
+```
+
+Navigate to your project directory and initialize required config files:
+
+```sh
+tool_name init
+```
+
 Run the example
 
 ```sh
-TOOL_NAME run --input "Hello world"
+tool_name run --input "Hello world"
 ```
 
 ![dag](assets/dag.png)
