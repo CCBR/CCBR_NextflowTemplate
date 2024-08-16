@@ -4,7 +4,7 @@ CCBR template for creating Nextflow pipelines <!-- TODO: replace this line with 
 
 <!-- TODO: replace CCBR/CCBR_NextflowTemplate in these badge links with your OWNER/TOOL_NAME -->
 
-[![build](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build.yml)
+[![build](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build-nextflow.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build-nextflow.yml)
 [![docs](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/docs-mkdocs.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/docs-mkdocs.yml)
 
 ## Using this template
