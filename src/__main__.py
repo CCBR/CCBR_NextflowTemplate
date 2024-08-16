@@ -126,7 +126,7 @@ def run(main_path, _mode, **kwargs):
 def init(**kwargs):
     """Initialize the working directory by copying the system default config files"""
     paths = ("nextflow.config", "conf/", "assets/")
-    ccbr_tools.pipeline.util.copy_config(paths)
+    ccbr_tools.pipeline.util.copy_config(paths, repo_base=repo_base)
     os.makedirs("log", exist_ok=True)
 
 
