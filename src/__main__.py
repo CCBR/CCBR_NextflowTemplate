@@ -4,17 +4,28 @@ Entrypoint for TOOL_NAME CLI
 Check out the wiki for a detailed look at customizing this file:
 https://github.com/beardymcjohnface/Snaketool/wiki/Customising-your-Snaketool
 """
-
-import os
+import cffconvert.cli.cli
 import click
-from .util import (
-    nek_base,
-    get_version,
-    copy_config,
-    OrderedCommands,
-    run_nextflow,
-    print_citation,
-)
+import os
+import pathlib
+
+import ccbr_tools.pkg_util
+import ccbr_tools.pipeline.util
+import ccbr_tools.pipeline.nextflow
+
+
+def repo_base(*paths):
+    basedir = pathlib.Path(__file__).absolute().parent.parent
+    return basedir.joinpath(*paths)
+
+
+def print_citation_flag(ctx, param, value):
+    if not value or ctx.resilient_parsing:
+        return
+    ccbr_tools.pkg_util.print_citation(
+        citation_file=repo_base("CITATION.cff"), output_format="bibtex"
+    )
+    ctx.exit()
 
 
 def common_options(func):
@@ -28,15 +39,22 @@ def common_options(func):
 
 
 @click.group(
-    cls=OrderedCommands, context_settings=dict(help_option_names=["-h", "--help"])
+    cls=ccbr_tools.pkg_util.CustomClickGroup,
+    context_settings=dict(help_option_names=["-h", "--help"]),
 )
-@click.version_option(get_version(), "-v", "--version", is_flag=True)
-@click.option(
-    "--citation",
+@click.version_option(
+    ccbr_tools.pkg_util.get_version(repo_base=repo_base),
+    "-v",
+    "--version",
     is_flag=True,
-    callback=print_citation,
-    expose_value=False,
+)
+@click.option(
+    "-c",
+    "--citation",
+    callback=print_citation_flag,
     is_eager=True,
+    is_flag=True,
+    expose_value=False,
     help="Print the citation in bibtex format and exit.",
 )
 def cli():
@@ -74,7 +92,7 @@ Run with a specific tag, branch, or commit from GitHub:
     "main_path",
     help="Path to the tool_name main.nf file or the GitHub repo (CCBR/TOOL_NAME). Defaults to the version installed in the $PATH.",
     type=str,
-    default=nek_base(os.path.join("main.nf")),
+    default=repo_base("main.nf"),
     show_default=True,
 )
 @click.option(
@@ -97,7 +115,7 @@ def run(main_path, _mode, **kwargs):
                 f"Path to the tool_name main.nf file not found: {main_path}"
             )
 
-    run_nextflow(
+    ccbr_tools.pipeline.nextflow.run_nextflow(
         nextfile_path=main_path,
         mode=_mode,
         **kwargs,
@@ -108,13 +126,39 @@ def run(main_path, _mode, **kwargs):
 def init(**kwargs):
     """Initialize the working directory by copying the system default config files"""
     paths = ("nextflow.config", "conf/", "assets/")
-    copy_config(paths)
+    ccbr_tools.pipeline.util.copy_config(paths)
     if not os.path.exists("log/"):
         os.mkdir("log/")
 
 
+@click.command()
+@click.argument(
+    "citation_file",
+    type=click.Path(exists=True),
+    required=True,
+    default=repo_base("CITATION.cff"),
+)
+@click.option(
+    "--output-format",
+    "-f",
+    default="bibtex",
+    help="Output format for the citation",
+    type=cffconvert.cli.cli.options["outputformat"]["type"],
+)
+def cite(citation_file, output_format):
+    """
+    Print the citation in the desired format
+
+    citation_file : Path to a file in Citation File Format (CFF) [default: the CFF for ccbr_tools]
+    """
+    ccbr_tools.pkg_util.print_citation(
+        citation_file=citation_file, output_format=output_format
+    )
+
+
 cli.add_command(run)
 cli.add_command(init)
+cli.add_command(cite)
 
 
 def main():
