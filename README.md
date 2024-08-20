@@ -7,6 +7,9 @@ CCBR template for creating Nextflow pipelines <!-- TODO: replace this line with 
 [![build](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build-nextflow.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build-nextflow.yml)
 [![docs](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/docs-mkdocs.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/docs-mkdocs.yml)
 
+See the website for detailed information, documentation, and examples:
+<https://ccbr.github.io/TOOL_NAME/>
+
 ## Using this template
 
 1. Create a new repository from this template using either of these options:
