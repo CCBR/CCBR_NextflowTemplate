@@ -115,9 +115,10 @@ def run(main_path, _mode, **kwargs):
                 f"Path to the tool_name main.nf file not found: {main_path}"
             )
 
-    ccbr_tools.pipeline.nextflow.run_nextflow(
+    ccbr_tools.pipeline.nextflow.run(
         nextfile_path=main_path,
         mode=_mode,
+        pipeline_name="TOOL_NAME",
         **kwargs,
     )
 
