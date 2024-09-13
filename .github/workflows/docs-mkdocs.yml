@@ -23,3 +23,4 @@ jobs:
       - uses: CCBR/actions/mkdocs-mike@iss-19
         with:
           github-token: ${{ github.token }}
+          ccbr-actions-version: iss-19
