@@ -80,7 +80,7 @@ pip3 install -e .
 Run the example
 
 ```sh
-TOOL_NAME run --input "Hello world"
+tool_name run --input "Hello world"
 ```
 
 ![dag](assets/dag.png)
