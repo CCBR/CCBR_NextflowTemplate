@@ -17,6 +17,7 @@ input        : ${params.input}
 .stripIndent()
 
 include { FASTQC } from "./modules/local/qc.nf"
+include { BWA_MEM } from './modules/CCBR/bwa/mem'
 
 workflow.onComplete {
     if (!workflow.stubRun && !workflow.commandLine.contains('-preview')) {

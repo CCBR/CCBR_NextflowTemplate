@@ -1,0 +1,17 @@
+{
+    "name": "CCBR/TOOL_NAME",
+    "homePage": "https://github.com/CCBR/TOOL_NAME",
+    "repos": {
+        "https://github.com/CCBR/nf-modules": {
+            "modules": {
+                "CCBR": {
+                    "bwa/mem": {
+                        "branch": "main",
+                        "git_sha": "490e4454c81e3fb852f7f964356f9981b6f1c439",
+                        "installed_by": ["modules"]
+                    }
+                }
+            }
+        }
+    }
+}

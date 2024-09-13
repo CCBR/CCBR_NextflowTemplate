@@ -55,6 +55,8 @@ See the website for detailed information, documentation, and examples:
    - dependencies
    - project URLs
 1. Write your nextflow workflow.
+   - Where possible, reuse existing modules and subworklows from [CCBR/nf-modules](https://github.com/CCBR/nf-modules)[^3].
+     Also consider contributing new modules & subworkflows to that repository!
 1. Write your documentation in `docs/` and enable GitHub Pages.
    - In settings, go to General > Pages and select the `gh-pages` branch.
      mkdocs will build your site under the `gh-pages` branch, and GitHub Pages will make it available at `https://OWNER.github.io/TOOL_NAME`.
@@ -119,3 +121,4 @@ If you plan to contribute your pipeline to nf-core, don't use this template -- i
 
 [^1]: nektool https://github.com/beardymcjohnface/nektool
 [^2]: instructions for nf-core pipelines https://nf-co.re/docs/contributing/tutorials/creating_with_nf_core
+[^3]: See also our reusable modules and subworkflows for CCBR nextflow pipelines: <https://github.com/CCBR/nf-modules>
