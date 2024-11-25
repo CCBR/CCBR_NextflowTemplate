@@ -1,5 +1,5 @@
 log.info """\
-TOOL_NAME
+TOOL_NAME $workflow.manifest.version
 =============
 NF version   : $nextflow.version
 runName      : $workflow.runName
