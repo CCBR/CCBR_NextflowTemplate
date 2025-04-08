@@ -7,7 +7,9 @@ on:
   pull_request:
     types:
       - opened
-
+permissions:
+  issues: read
+  pull-requests: read
 jobs:
   add-to-project:
     runs-on: ubuntu-latest
