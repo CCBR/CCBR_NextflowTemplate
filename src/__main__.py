@@ -28,16 +28,6 @@ def print_citation_flag(ctx, param, value):
     ctx.exit()
 
 
-def common_options(func):
-    """Common options decorator for use with click commands."""
-    options = [
-        click.argument("nextflow_args", nargs=-1),
-    ]
-    for option in reversed(options):
-        func = option(func)
-    return func
-
-
 @click.group(
     cls=ccbr_tools.pkg_util.CustomClickGroup,
     context_settings=dict(help_option_names=["-h", "--help"]),
@@ -96,6 +86,13 @@ Run with a specific tag, branch, or commit from GitHub:
     show_default=True,
 )
 @click.option(
+    "--output",
+    help="Output directory path for tool_name init & run. Equivalient to nextflow launchDir. Defaults to your current working directory.",
+    type=click.Path(file_okay=False, dir_okay=True, writable=True),
+    default=pathlib.Path.cwd(),
+    show_default=False,
+)
+@click.option(
     "--mode",
     "_mode",
     help="Run mode (slurm, local)",
@@ -103,8 +100,17 @@ Run with a specific tag, branch, or commit from GitHub:
     default="local",
     show_default=True,
 )
-@common_options
-def run(main_path, _mode, **kwargs):
+@click.option(
+    "--forceall",
+    "-F",
+    "force_all",
+    help="Force all processes to run (i.e. do not use nextflow -resume)",
+    is_flag=True,
+    default=False,
+    show_default=True,
+)
+@click.argument("nextflow_args", nargs=-1)
+def run(main_path, output, _mode, force_all, **kwargs):
     """Run the workflow"""
     if (  # this is the only acceptable github repo option for tool_name
         main_path != "CCBR/TOOL_NAME"
@@ -114,21 +120,41 @@ def run(main_path, _mode, **kwargs):
             raise FileNotFoundError(
                 f"Path to the tool_name main.nf file not found: {main_path}"
             )
+    output_dir = output if isinstance(output, pathlib.Path) else pathlib.Path(output)
+    if not output_dir.is_dir() or not (output_dir / "nextflow.config").exists():
+        raise FileNotFoundError(
+            f"output directory not initialized: {output_dir}. Hint: you must initialize the output directory with `tool_name init --output {output_dir}`"
+        )
+    current_wd = os.getcwd()
+    try:
+        os.chdir(output_dir)
 
-    ccbr_tools.pipeline.nextflow.run(
-        nextfile_path=main_path,
-        mode=_mode,
-        pipeline_name="TOOL_NAME",
-        **kwargs,
-    )
+        ccbr_tools.pipeline.nextflow.run(
+            nextfile_path=main_path,
+            mode=_mode,
+            force_all=force_all,
+            pipeline_name="TOOL_NAME",
+            **kwargs,
+        )
+    finally:
+        os.chdir(current_wd)
 
 
 @click.command()
-def init(**kwargs):
+@click.option(
+    "--output",
+    help="Output directory path for tool_name init & run. Equivalient to nextflow launchDir. Defaults to your current working directory.",
+    type=click.Path(file_okay=False, dir_okay=True, writable=True),
+    default=pathlib.Path.cwd(),
+    show_default=False,
+)
+def init(output, **kwargs):
     """Initialize the working directory by copying the system default config files"""
+    output_dir = output if isinstance(output, pathlib.Path) else pathlib.Path(output)
+    ccbr_tools.pkg_util.msg_box(f"Initializing TOOL_NAME in {output_dir}")
+    (output_dir / "log/").mkdir(parents=True, exist_ok=True)
     paths = ("nextflow.config", "conf/", "assets/")
-    ccbr_tools.pipeline.util.copy_config(paths, repo_base=repo_base)
-    os.makedirs("log", exist_ok=True)
+    ccbr_tools.pipeline.util.copy_config(paths, repo_base=repo_base, outdir=output_dir)
 
 
 @click.command()
