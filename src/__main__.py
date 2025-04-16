@@ -50,6 +50,8 @@ def print_citation_flag(ctx, param, value):
 def cli():
     """TODO oneline description of TOOL_NAME
 
+    docs: https://ccbr.github.io/TOOL_NAME
+
     For more options, run:
     tool_name [command] --help"""
     pass
@@ -111,7 +113,11 @@ Run with a specific tag, branch, or commit from GitHub:
 )
 @click.argument("nextflow_args", nargs=-1)
 def run(main_path, output, _mode, force_all, **kwargs):
-    """Run the workflow"""
+    """
+    Run the workflow
+
+    docs: https://ccbr.github.io/TOOL_NAME
+    """
     if (  # this is the only acceptable github repo option for tool_name
         main_path != "CCBR/TOOL_NAME"
     ):
