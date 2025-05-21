@@ -42,7 +42,7 @@ jobs:
         run: |
           mkdir -p tmp && pushd tmp
           tool_name init
-          tool_name run -c conf/ci_stub.config -stub
+          tool_name run -c conf/ci_stub.config -stub --mode local
           popd
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v4

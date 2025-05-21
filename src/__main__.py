@@ -67,12 +67,12 @@ Nextflow options:
 \b
 EXAMPLES:
 Execute with slurm:
-  tool_name run ... --mode slurm
+  tool_name run --output path/to/outdir --mode slurm
 Preview the processes that will run:
-  tool_name run ... --mode local -preview
+  tool_name run --output path/to/outdir --mode local -preview
 Add nextflow args (anything supported by `nextflow run`):
-  tool_name run ... --mode slurm -profile test
-  tool_name run ... --mode slurm -profile test -params-file assets/params.yml
+  tool_name run --output path/to/outdir --mode slurm -profile test
+  tool_name run --output path/to/outdir --mode slurm -profile test -params-file assets/params.yml
 """
 
 
@@ -103,7 +103,7 @@ Add nextflow args (anything supported by `nextflow run`):
     "_mode",
     help="Run mode (slurm, local)",
     type=str,
-    default="local",
+    default="slurm",
     show_default=True,
 )
 @click.option(
