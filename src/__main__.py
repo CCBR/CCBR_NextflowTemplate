@@ -59,17 +59,20 @@ def cli():
 
 help_msg_extra = """
 \b
+Nextflow options:
+-profile <profile>    Nextflow profile to use (e.g. test)
+-params-file <file>   Nextflow params file to use (e.g. assets/params.yml)
+-preview              Preview the processes that will run without executing them
+
+\b
 EXAMPLES:
 Execute with slurm:
-    tool_name run ... --mode slurm
+  tool_name run --output path/to/outdir --mode slurm
 Preview the processes that will run:
-    tool_name run ... --mode local -preview
+  tool_name run --output path/to/outdir --mode local -preview
 Add nextflow args (anything supported by `nextflow run`):
-    tool_name run ... -work-dir path/to/workDir
-Run with a specific installation of tool_name:
-    tool_name run --main path/to/tool_name/main.nf ...
-Run with a specific tag, branch, or commit from GitHub:
-    tool_name run --main CCBR/TOOL_NAME -r v0.1.0 ...
+  tool_name run --output path/to/outdir --mode slurm -profile test
+  tool_name run --output path/to/outdir --mode slurm -profile test -params-file assets/params.yml
 """
 
 
@@ -86,6 +89,7 @@ Run with a specific tag, branch, or commit from GitHub:
     type=str,
     default=repo_base("main.nf"),
     show_default=True,
+    hidden=True,
 )
 @click.option(
     "--output",
@@ -99,7 +103,7 @@ Run with a specific tag, branch, or commit from GitHub:
     "_mode",
     help="Run mode (slurm, local)",
     type=str,
-    default="local",
+    default="slurm",
     show_default=True,
 )
 @click.option(
@@ -115,6 +119,9 @@ Run with a specific tag, branch, or commit from GitHub:
 def run(main_path, output, _mode, force_all, **kwargs):
     """
     Run the workflow
+
+    Note: you must first run `tool_name init --output <output_dir>` to initialize
+    the output directory.
 
     docs: https://ccbr.github.io/TOOL_NAME
     """
