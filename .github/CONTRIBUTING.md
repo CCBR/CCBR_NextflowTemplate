@@ -17,7 +17,7 @@ as our collaboration process.
 Follow the steps below for detailed instructions on contributing changes to
 TOOL_NAME.
 
-![GitHub Flow diagram](https://raw.githubusercontent.com/CCBR/CCBR_NextflowTemplate/main/.github/img/GitHub-Flow_bg-white.png)
+[![GitHub Flow diagram](https://raw.githubusercontent.com/CCBR/CCBR_NextflowTemplate/main/.github/img/GitHub-Flow_bg-white.png)](https://lucid.app/lucidchart/03793827-a844-45c3-a3c6-40841ea7a19f/view)
 
 ### Clone the repo
 
@@ -45,30 +45,30 @@ cd TOOL_NAME
 
 ### If this is your first time cloning the repo, you may need to install dependencies
 
-- Install nextflow and singularity or docker if needed (biowulf already has these available as modules).
+-   Install nextflow and singularity or docker if needed (biowulf already has these available as modules).
 
-- Install the python dependencies with pip
+-   Install the python dependencies with pip
 
-  ```sh
-  pip install .
-  ```
+    ```sh
+    pip install .
+    ```
 
-  If you're developing on biowulf, you can use our shared conda environment which already has these dependencies installed
+    If you're developing on biowulf, you can use our shared conda environment which already has these dependencies installed
 
-  ```sh
-  . "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh"
-  conda activate py311
-  ```
+    ```sh
+    . "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh"
+    conda activate py311
+    ```
 
-- Install [`pre-commit`](https://pre-commit.com/#install) if you don't already
-  have it. Then from the repo's root directory, run
+-   Install [`pre-commit`](https://pre-commit.com/#install) if you don't already
+    have it. Then from the repo's root directory, run
 
-  ```sh
-  pre-commit install
-  ```
+    ```sh
+    pre-commit install
+    ```
 
-  This will install the repo's pre-commit hooks.
-  You'll only need to do this step the first time you clone the repo.
+    This will install the repo's pre-commit hooks.
+    You'll only need to do this step the first time you clone the repo.
 
 ### Create a branch
 
@@ -137,14 +137,14 @@ styled correctly and will attempt to make corrections if needed.
 > Fix End of Files.........................................................Passed <br>
 > Trim Trailing Whitespace.................................................Failed <br>
 >
-> - hook id: trailing-whitespace <br>
-> - exit code: 1 <br>
-> - files were modified by this hook <br> > <br>
->   Fixing path/to/changed/files/file.txt <br> > <br>
->   codespell................................................................Passed <br>
->   style-files..........................................(no files to check)Skipped <br>
->   readme-rmd-rendered..................................(no files to check)Skipped <br>
->   use-tidy-description.................................(no files to check)Skipped <br>
+> -   hook id: trailing-whitespace <br>
+> -   exit code: 1 <br>
+> -   files were modified by this hook <br> > <br>
+>     Fixing path/to/changed/files/file.txt <br> > <br>
+>     codespell................................................................Passed <br>
+>     style-files..........................................(no files to check)Skipped <br>
+>     readme-rmd-rendered..................................(no files to check)Skipped <br>
+>     use-tidy-description.................................(no files to check)Skipped <br>
 
 In the example above, one of the hooks modified a file in the proposed commit,
 so the pre-commit check failed. You can run `git diff` to see the changes that
@@ -254,9 +254,9 @@ start from the most recent commits in main.
 
 ## Helpful links for more information
 
-- [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow)
-- [semantic versioning guidelines](https://semver.org/)
-- [changelog guidelines](https://keepachangelog.com/en/1.1.0/)
-- [tidyverse code review principles](https://code-review.tidyverse.org)
-- [reproducible examples](https://www.tidyverse.org/help/#reprex)
-- [nf-core extensions for VS Code](https://marketplace.visualstudio.com/items?itemName=nf-core.nf-core-extensionpack)
+-   [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow)
+-   [semantic versioning guidelines](https://semver.org/)
+-   [changelog guidelines](https://keepachangelog.com/en/1.1.0/)
+-   [tidyverse code review principles](https://code-review.tidyverse.org)
+-   [reproducible examples](https://www.tidyverse.org/help/#reprex)
+-   [nf-core extensions for VS Code](https://marketplace.visualstudio.com/items?itemName=nf-core.nf-core-extensionpack)
