@@ -64,7 +64,7 @@ jobs:
 
       - name: Write contributors page
         run: |
-          python .github/contributors.py > docs/devs/contributors.md
+          python .github/contributors.py > docs/contributors.md
 
       # mermaid diagrams
       - name: Setup mermaid-cli
