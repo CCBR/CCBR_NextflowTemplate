@@ -72,8 +72,11 @@ jobs:
 
       - name: Render Mermaid diagram SVG
         if: contains(steps.changed-files.outputs.changed_files_json, 'mermaid') || contains(steps.changed-files.outputs.changed_files_json, 'mmd')
+        env:
+          CHANGED_FILES_JSON: ${{ steps.changed-files.outputs.changed_files_json }}
         run: |
-          for input in $(echo '${{ steps.changed-files.outputs.changed_files_json }}' | jq -r '.[] | select(endswith(".mermaid") or endswith(".mmd"))')
+
+          for input in $(echo '${CHANGED_FILES_JSON}' | jq -r '.[] | select(endswith(".mermaid") or endswith(".mmd"))')
           do
             output="${input%.mermaid}.svg"
             output="${output%.mmd}.svg"

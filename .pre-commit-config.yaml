@@ -18,6 +18,16 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
       - id: check-json
+  - repo: https://github.com/CCBR/Tools
+    rev: v0.5.1
+    hooks:
+      - id: detect-absolute-paths
+        exclude: |
+          (?x)^(
+              .gitignore|
+              .*.gitignore|
+              docs/_extensions/.*
+          )$
   # spell check
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.2
