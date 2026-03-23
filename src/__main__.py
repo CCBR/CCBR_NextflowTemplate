@@ -4,6 +4,7 @@ Entrypoint for TOOL_NAME CLI
 Check out the wiki for a detailed look at customizing this file:
 https://github.com/beardymcjohnface/Snaketool/wiki/Customising-your-Snaketool
 """
+
 import cffconvert.cli.cli
 import click
 import os

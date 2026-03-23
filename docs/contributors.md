@@ -6,6 +6,6 @@ TODO: populate this automagically similar to https://nf-co.re/contributors? or l
 
 The following members contributed to the development of the CARLISLE pipeline:
 
-- [Samantha Sevilla](https://github.com/slsevilla)
+-   [Samantha Sevilla](https://github.com/slsevilla)
 
 SS contributed to the generating the source code and all members contributed to the main concepts and analysis.
