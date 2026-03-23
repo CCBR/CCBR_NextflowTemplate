@@ -42,7 +42,8 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "black >= 22.0.0",
-    "pre-commit"
+    "pre-commit",
+    "nf-core >= 3.2.0"
 ]
 test = [
     "pytest"
