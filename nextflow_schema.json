@@ -25,17 +25,34 @@
                     "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row.",
                     "fa_icon": "fas fa-file-csv"
                 },
+                "genome": {
+                    "type": "string",
+                    "description": "Reference genome (e.g. hg38, mm10). This can be a genome in conf/genomes.config, or see 'Custom genome options' to build a custom reference from a fasta & gtf file."
+                },
                 "outputDir": {
                     "type": "string",
-                    "default": "results"
+                    "default": "results",
+                    "fa_icon": "fas fa-folder",
+                    "hidden": true
                 },
                 "tracedir": {
                     "type": "string",
-                    "default": "results/pipeline_info"
+                    "default": "${outputDir}/pipeline_info",
+                    "fa_icon": "fas fa-folder",
+                    "hidden": true
                 },
                 "publish_dir_mode": {
                     "type": "string",
-                    "default": "link"
+                    "default": "link",
+                    "enum": [
+                        "link",
+                        "copy",
+                        "move",
+                        "copyNoFollow",
+                        "rellink",
+                        "symlink"
+                    ],
+                    "description": "How to publish files to the results directory. This parameter sets Nextflow's workflow.output.mode configuration option."
                 }
             }
         }
