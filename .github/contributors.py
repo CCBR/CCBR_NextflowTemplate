@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import sys
 import warnings
 
 from ccbr_tools.github import get_repo_contributors, get_user_info
@@ -32,7 +33,8 @@ def get_contrib_html(contrib):
     return user_html
 
 
-def main(contribs_md=CONTRIB_MD, repo="CHAMPAGNE", org="CCBR", ncol=3):
+def main(contribs_md=CONTRIB_MD, org_repo="CCBR/CCBR_NextflowTemplate", ncol=3):
+    org, repo = org_repo.split("/")
     header = "|" + " |" * ncol + "\n|" + "---|" * ncol
     contribs_str = header
     contribs = get_repo_contributors(repo, org)
@@ -50,12 +52,12 @@ def main(contribs_md=CONTRIB_MD, repo="CHAMPAGNE", org="CCBR", ncol=3):
     contribs_md.append(contribs_str)
 
     contribs_md.append(
-        "\nView the [contributors graph on GitHub](https://github.com/CCBR/CHAMPAGNE/graphs/contributors) for more details."
+        f"\nView the [contributors graph on GitHub](https://github.com/{org_repo}/graphs/contributors) for more details."
     )
 
-    with open("docs/devs/contributors.md", "w") as f:
+    with open("docs/contributors.md", "w") as f:
         f.write("\n".join(contribs_md))
 
 
 if __name__ == "__main__":
-    main()
+    main(org_repo=sys.argv[1] if len(sys.argv) > 1 else "CCBR/CCBR_NextflowTemplate")
