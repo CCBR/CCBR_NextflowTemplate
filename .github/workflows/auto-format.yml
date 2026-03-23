@@ -54,7 +54,7 @@ jobs:
         if: contains(steps.changed-files.outputs.changed_files_json, 'nextflow')
         run: |
           nf-core pipelines schema docs -f -x markdown -o docs/params.tmp
-          cat docs/_params_head.md docs/params.tmp > docs/guide/params.md
+          cat docs/_params_head.md docs/params.tmp > docs/user-guide/params.md
           rm docs/params.tmp
 
       - name: Write genomes docs
@@ -91,13 +91,13 @@ jobs:
 
       - name: commit & push
         run: |
-          git add docs/guide/params.md
+          git add docs/user-guide/params.md
           git commit -m "ci: 📑 update params docs with 'nf-core pipelines schema docs'" || echo "nothing to commit"
 
-          git add docs/guide/genomes.md
+          git add docs/user-guide/genomes.md
           git commit -m "ci: 📑 update genomes docs with .github/genome_docs.py" || echo "nothing to commit"
 
-          git add docs/devs/contributors.md
+          git add docs/contributors.md
           git commit -m "ci: 📑 update contributors page with .github/contributors.py" || echo "nothing to commit"
 
           git add .
