@@ -30,9 +30,9 @@ See the website for detailed information, documentation, and examples:
    Replace `TOOL_NAME` with the all-caps version (refers to the GitHub repo name)
    and `tool_name` with the lowercase version (refers to the command-line interface). Places include:
 
-    <!--
-    grep -irl tool_name . | sort | sed "s|\./||"
-    -->
+     <!--
+     grep -irl tool_name . | sort | sed "s|\./||"
+     -->
 
     ```
     .github/CONTRIBUTING.md
