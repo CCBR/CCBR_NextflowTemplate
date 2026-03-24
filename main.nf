@@ -1,23 +1,12 @@
-log.info """\
-TOOL_NAME $workflow.manifest.version
-=============
-NF version   : $nextflow.version
-runName      : $workflow.runName
-username     : $workflow.userName
-configs      : $workflow.configFiles
-profile      : $workflow.profile
-cmd line     : $workflow.commandLine
-start time   : $workflow.start
-projectDir   : $workflow.projectDir
-launchDir    : $workflow.launchDir
-workDir      : $workflow.workDir
-homeDir      : $workflow.homeDir
-input        : ${params.input}
-"""
-.stripIndent()
+nextflow.enable.dsl = 2
 
+// Modules
 include { FASTQC } from "./modules/local/qc.nf"
 include { BWA_MEM } from './modules/CCBR/bwa/mem'
+
+// Plugins
+include { validateParameters; paramsSummaryLog } from 'plugin/nf-schema'
+
 
 workflow.onComplete {
     if (!workflow.stubRun && !workflow.commandLine.contains('-preview')) {
@@ -26,6 +15,24 @@ workflow.onComplete {
             println message
         }
     }
+}
+
+workflow version {
+    println "TOOL_NAME ${workflow.manifest.version}"
+}
+
+workflow LOG {
+    log.info """\
+            TOOL_NAME $workflow.manifest.version
+            =============
+            cmd line     : $workflow.commandLine
+            start time   : $workflow.start
+            launchDir    : $workflow.launchDir
+            input        : ${params.input}
+            genome       : ${params.genome}
+            """
+            .stripIndent()
+    log.info paramsSummaryLog(workflow)
 }
 
 workflow qc {
@@ -48,5 +55,6 @@ process yeet {
 }
 
 workflow {
+    LOG()
     yeet | view
 }

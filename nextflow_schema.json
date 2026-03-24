@@ -1,0 +1,65 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/CCBR/TOOL_NAME//nextflow_schema.json",
+    "title": "CCBR/TOOL_NAME pipeline parameters",
+    "description": "TODO one-line description of TOOL_NAME goes here",
+    "type": "object",
+    "$defs": {
+        "input_output_options": {
+            "title": "Input/output options",
+            "type": "object",
+            "fa_icon": "fas fa-terminal",
+            "description": "Define where the pipeline should find input data and save output data.",
+            "required": [
+                "input"
+            ],
+            "properties": {
+                "input": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "schema": "assets/schema_input.json",
+                    "mimetype": "text/csv",
+                    "pattern": "^\\S+\\.csv$",
+                    "description": "Path to comma-separated file containing information about the samples in the experiment.",
+                    "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row.",
+                    "fa_icon": "fas fa-file-csv"
+                },
+                "genome": {
+                    "type": "string",
+                    "description": "Reference genome (e.g. hg38, mm10). This can be a genome in conf/genomes.config, or see 'Custom genome options' to build a custom reference from a fasta & gtf file."
+                },
+                "outputDir": {
+                    "type": "string",
+                    "default": "results",
+                    "fa_icon": "fas fa-folder",
+                    "hidden": true
+                },
+                "tracedir": {
+                    "type": "string",
+                    "default": "${outputDir}/pipeline_info",
+                    "fa_icon": "fas fa-folder",
+                    "hidden": true
+                },
+                "publish_dir_mode": {
+                    "type": "string",
+                    "default": "link",
+                    "enum": [
+                        "link",
+                        "copy",
+                        "move",
+                        "copyNoFollow",
+                        "rellink",
+                        "symlink"
+                    ],
+                    "description": "How to publish files to the results directory. This parameter sets Nextflow's workflow.output.mode configuration option."
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/$defs/input_output_options"
+        }
+    ]
+}

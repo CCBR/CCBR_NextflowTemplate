@@ -6,8 +6,11 @@ on:
 
 env:
   GH_TOKEN: ${{ github.token }}
+
 permissions:
   contents: write
+  pull-requests: write
+
 jobs:
   auto-format:
     runs-on: ubuntu-latest
@@ -17,20 +20,86 @@ jobs:
         if: github.event_name == 'pull_request'
         with:
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
-
+          ref: ${{ github.head_ref }}
       - uses: actions/checkout@v4
-        if: github.event_name == 'push'
+        if: github.event_name != 'pull_request'
         with:
           fetch-depth: 0
 
-      - name: format
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - name: Install nextflow
+        uses: nf-core/setup-nextflow@v1
+      - name: git config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .[dev]
+      - id: changed-files
+        name: Check changed files
+        uses: knu/changed-files@v1
+        with:
+          paths: |
+            CITATION.cff
+            nextflow_schema.json
+            nextflow.config
+            conf/genomes.config
+            **.mermaid
+            **.mmd
+      - name: Write nf-schema docs
+        if: contains(steps.changed-files.outputs.changed_files_json, 'nextflow')
+        run: |
+          nf-core pipelines schema docs -f -x markdown -o docs/params.tmp
+          cat docs/_params_head.md docs/params.tmp > docs/user-guide/params.md
+          rm docs/params.tmp
+
+      - name: Write genomes docs
+        if: contains(steps.changed-files.outputs.changed_files_json, 'genomes.config')
+        run: |
+          python .github/genome_docs.py
+
+      - name: Write contributors page
+        run: |
+          python .github/contributors.py ${{ github.repository }}
+
+      # mermaid diagrams
+      - name: Setup mermaid-cli
+        uses: AnimMouse/setup-mermaid-cli@v1
+
+      - name: Render Mermaid diagram SVG
+        if: contains(steps.changed-files.outputs.changed_files_json, 'mermaid') || contains(steps.changed-files.outputs.changed_files_json, 'mmd')
+        env:
+          CHANGED_FILES_JSON: ${{ steps.changed-files.outputs.changed_files_json }}
+        run: |
+
+          for input in $(echo '${CHANGED_FILES_JSON}' | jq -r '.[] | select(endswith(".mermaid") or endswith(".mmd"))')
+          do
+            output="${input%.mermaid}.svg"
+            output="${output%.mmd}.svg"
+            mmdc -i "$input" -o "$output"
+            git add "$output"
+          done
+          git commit -m "ci: 🧜‍♀️ update mermaid diagram SVGs" || echo "nothing to commit"
+
+      - name: Format
         uses: pre-commit/action@v3.0.1
         continue-on-error: true
 
       - name: commit & push
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/user-guide/params.md
+          git commit -m "ci: 📑 update params docs with 'nf-core pipelines schema docs'" || echo "nothing to commit"
+
+          git add docs/user-guide/genomes.md
+          git commit -m "ci: 📑 update genomes docs with .github/genome_docs.py" || echo "nothing to commit"
+
+          git add docs/contributors.md
+          git commit -m "ci: 📑 update contributors page with .github/contributors.py" || echo "nothing to commit"
+
           git add .
-          git commit -m "ci: 🤖 format everything with pre-commit" && git push || echo "nothing to commit"
+          git commit -m "ci: 🤖 format everything with pre-commit" || echo "nothing to commit"
+          git push || echo "nothing to push"
