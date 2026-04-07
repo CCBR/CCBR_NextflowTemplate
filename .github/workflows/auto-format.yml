@@ -16,21 +16,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-        if: github.event_name == 'pull_request'
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          ref: ${{ github.head_ref }}
-      - uses: actions/checkout@v4
-        if: github.event_name != 'pull_request'
-        with:
-          fetch-depth: 0
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v6
         with:
-          python-version: 3.11
+          python-version: 3.15
       - name: Install nextflow
-        uses: nf-core/setup-nextflow@v1
+        uses: nf-core/setup-nextflow@v2
       - name: git config
         run: |
           git config --global user.name "github-actions[bot]"

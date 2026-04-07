@@ -19,9 +19,9 @@ jobs:
   mkdocs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - uses: CCBR/actions/mkdocs-mike@v0.1
+      - uses: CCBR/actions/mkdocs-mike@v0.5
         with:
           github-token: ${{ github.token }}
