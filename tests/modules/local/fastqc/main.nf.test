@@ -1,0 +1,34 @@
+nextflow_process {
+
+    name "Test Process FASTQC"
+    script "modules/local/fastqc/main.nf"
+    process "FASTQC"
+
+    test("sarscov2 single-end [fastq]") {
+
+        when {
+            process {
+                """
+                input[0] = Channel.of([
+                    [ id: 'test', single_end:true ],
+                    [ file(params.test_data['sarscov2']['illumina'].test_1_fastq_gz, checkIfExists: true) ]
+                ])
+                """
+            }
+        }
+
+        then {
+            assertAll (
+                { assert process.success },
+                // NOTE The report contains the date inside it, which means that the md5sum is stable per day, but not longer than that. So you can't md5sum it.
+                // looks like this: <div id="header_filename">Mon 2 Oct 2023<br/>test.gz</div>
+                // https://github.com/nf-core/modules/pull/3903#issuecomment-1743620039
+                { assert process.out.html[0][1] ==~ ".*/test.html" },
+                { assert process.out.zip[0][1] ==~ ".*/test.zip" },
+                { assert path(process.out.html[0][1]).text.contains("<tr><td>File type</td><td>Conventional base calls</td></tr>") },
+                { assert snapshot(sanitizeOutput(process.out).findAll { key, val -> key != 'html' && key != 'zip' }).match() }
+            )
+        }
+    }
+
+}

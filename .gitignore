@@ -23,13 +23,6 @@
 hs_err_pid*
 replay_pid*
 
-# nextflow
-.nextflow*
-work/
-data/
-results/
-/params.yaml
-
 # python packaging
 *.pyc
 *.egg-info
@@ -41,3 +34,11 @@ results/
 # code editors
 .vscode/
 *.code-workspace
+
+# nextflow
+.nextflow*
+work/
+data/
+results/
+/params.yaml
+.nf-test
