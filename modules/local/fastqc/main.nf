@@ -1,14 +1,15 @@
 
 process FASTQC {
-    tag { sample_id }
+    tag { meta.id }
 
     container "${params.containers.base}"
 
     input:
-        tuple val(sample_id), path(fastq)
+        tuple val(meta), path(fastq)
     output:
-        tuple val(sample_id), path("${sample_id}*.html"), emit: html
-        tuple val(sample_id), path("${sample_id}*.zip"),  emit: zip
+        tuple val(meta), path("*fastqc.html"), emit: html
+        tuple val(meta), path("*fastqc.zip"),  emit: zip
+        tuple val("${task.process}"), val('fastqc'), eval('fastqc --version | sed "/FastQC v/!d; s/.*v//"'), emit: versions_fastqc, topic: versions
 
     script:
     """
@@ -16,5 +17,10 @@ process FASTQC {
         $fastq \
         -t $task.cpus \
         -o .
+    """
+
+    stub:
+    """
+    touch ${meta.id}_fastqc.html ${meta.id}_fastqc.zip
     """
 }
