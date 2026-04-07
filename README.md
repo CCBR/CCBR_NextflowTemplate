@@ -75,7 +75,9 @@ See the website for detailed information, documentation, and examples:
    grep -ir "CCBR\|CCR" .
    ```
 
-For a work-in-progress example of this template in action, see the [CHAMPAGNE](https://github.com/CCBR/CHAMPAGNE) repo.
+For an example of this template in action, see the [CHAMPAGNE](https://github.com/CCBR/CHAMPAGNE) repo.
+For a list of all repositories that were created from this template, see
+[this GitHub search](https://github.com/search?q=in%3Areadme+sort%3Aupdated+%22CCBR+Nextflow+Template%22&type=repositories).
 
 ## Usage
 
