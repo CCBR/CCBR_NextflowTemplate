@@ -2,7 +2,7 @@
 process FASTQC {
     tag { meta.id }
 
-    container "${params.containers.base}"
+    container "nciccbr/ccrgb_qctools:v4.0"
 
     input:
         tuple val(meta), path(fastq)
