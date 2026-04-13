@@ -1,9 +1,5 @@
 nextflow.enable.dsl = 2
 
-// Modules
-include { FASTQC } from "./modules/local/qc.nf"
-include { BWA_MEM } from './modules/CCBR/bwa/mem'
-
 // Plugins
 include { validateParameters; paramsSummaryLog } from 'plugin/nf-schema'
 
@@ -35,12 +31,6 @@ workflow LOG {
     log.info paramsSummaryLog(workflow)
 }
 
-workflow qc {
-    raw_fastqs = Channel
-                .fromPath(params.input)
-                .map { file -> tuple(file.simpleName, file) }
-    raw_fastqs | FASTQC
-}
 
 process yeet {
     container "${params.containers.base}"
@@ -56,5 +46,6 @@ process yeet {
 
 workflow {
     LOG()
+    validateParameters()
     yeet | view
 }
