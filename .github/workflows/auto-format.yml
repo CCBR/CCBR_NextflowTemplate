@@ -23,7 +23,7 @@ jobs:
 
       - uses: actions/setup-python@v6
         with:
-          python-version: 3.15
+          python-version: 3.14
       - name: Install nextflow
         uses: nf-core/setup-nextflow@v2
       - name: git config
