@@ -42,3 +42,4 @@ data/
 results/
 /params.yaml
 .nf-test
+/setup-nextflow/
