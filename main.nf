@@ -4,15 +4,6 @@ nextflow.enable.dsl = 2
 include { validateParameters; paramsSummaryLog } from 'plugin/nf-schema'
 
 
-workflow.onComplete {
-    if (!workflow.stubRun && !workflow.commandLine.contains('-preview')) {
-        def message = Utils.spooker(workflow)
-        if (message) {
-            println message
-        }
-    }
-}
-
 workflow version {
     println "TOOL_NAME ${workflow.manifest.version}"
 }
@@ -47,5 +38,15 @@ process yeet {
 workflow {
     LOG()
     validateParameters()
+
     yeet | view
+
+    workflow.onComplete = {
+        if (!workflow.stubRun && !workflow.commandLine.contains('-preview')) {
+            def message = Utils.spooker(workflow)
+            if (message) {
+                println message
+            }
+        }
+    }
 }
