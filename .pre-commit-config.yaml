@@ -19,7 +19,7 @@ repos:
       - id: trailing-whitespace
       - id: check-json
   - repo: https://github.com/CCBR/Tools
-    rev: v0.7.0
+    rev: v0.7
     hooks:
       - id: sync-nextflow-version
       # - id: detect-absolute-paths
@@ -37,7 +37,7 @@ repos:
         args: ["-I", ".github/WORDLIST.txt"]
   # Python formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.16
+    rev: v0.15.17
     hooks:
       - id: ruff-check
         args: [--fix]
