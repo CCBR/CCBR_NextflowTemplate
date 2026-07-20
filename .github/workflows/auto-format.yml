@@ -63,6 +63,7 @@ jobs:
 
       # mermaid diagrams
       - name: Setup mermaid-cli
+        if: contains(steps.changed-files.outputs.changed_files_json, 'mermaid') || contains(steps.changed-files.outputs.changed_files_json, 'mmd')
         uses: AnimMouse/setup-mermaid-cli@v1
 
       - name: Render Mermaid diagram SVG
