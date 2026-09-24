@@ -8,7 +8,7 @@ import sys
 # without the need to install it via pip first
 SCRIPT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "src")
 sys.path.append(SCRIPT_DIR)
-from src.__main__ import main  # noqa: E402
+from src.__main__ import main
 
 if (
     __name__ == "__main__"

@@ -5,14 +5,14 @@ Check out the wiki for a detailed look at customizing this file:
 https://github.com/beardymcjohnface/Snaketool/wiki/Customising-your-Snaketool
 """
 
-import cffconvert.cli.cli
-import click
 import os
 import pathlib
 
-import ccbr_tools.pkg_util
-import ccbr_tools.pipeline.util
 import ccbr_tools.pipeline.nextflow
+import ccbr_tools.pipeline.util
+import ccbr_tools.pkg_util
+import cffconvert.cli.cli
+import click
 
 
 def repo_base(*paths):
@@ -55,7 +55,6 @@ def cli():
 
     For more options, run:
     tool_name [command] --help"""
-    pass
 
 
 help_msg_extra = """
