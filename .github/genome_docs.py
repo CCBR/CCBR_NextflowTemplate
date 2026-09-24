@@ -83,14 +83,14 @@ def to_markdown(genomes, md_head=MD_HEAD):
         "### Reference Genomes\n",
         "These genomes can be passed to the `--genome` parameter.",
     ]
-    for gname, genome in genomes.items():
+    for genome in genomes.values():
         if genome.is_reference:
             md += genome.md
     md += [
         "\n### Spike-in Genomes\n",
         "These genomes can be passed to the `--spike_genome` parameter.",
     ]
-    for gname, genome in genomes.items():
+    for genome in genomes.values():
         if genome.is_spike:
             md += genome.md
     return md
