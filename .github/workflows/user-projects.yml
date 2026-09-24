@@ -16,7 +16,7 @@ jobs:
   add-to-project:
     runs-on: ubuntu-latest
     steps:
-      - uses: CCBR/actions/user-projects@v0.5
+      - uses: CCBR/actions/user-projects@v0.7
         with:
           app-id: ${{ vars.CCBR_BOT_APP_ID }}
           app-private-key: ${{ secrets.CCBR_BOT_PRIVATE_KEY }}
