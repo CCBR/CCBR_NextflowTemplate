@@ -2,8 +2,8 @@
 <span class=w>    </span>--input<span class=w> </span>assets/samplesheet_hg38.csv<span class=w> </span><span class=se>\</span>
 <span class=w>    </span>--contrasts<span class=w> </span>assets/contrasts_hg38.csv<span class=w> </span><span class=se>\</span>
 <span class=w>    </span>--genome<span class=w> </span>hg38
-</code></pre></div> <p>Alternatively, you can create a YAML file with the parameters you want to set. This is useful for managing multiple parameters or for sharing configurations with others. Here's an example YAML file with some common parameters:</p> <p><code>assets/params.yml</code></p> <div class=highlight><pre><span></span><code><span class=nt>input</span><span class=p>:</span><span class=w> </span><span class=s>&#39;./assets/samplesheet_hg38.csv&#39;</span>
-<span class=nt>contrasts</span><span class=p>:</span><span class=w> </span><span class=s>&#39;./assets/contrasts_hg38.csv&#39;</span>
+</code></pre></div> <p>Alternatively, you can create a YAML file with the parameters you want to set. This is useful for managing multiple parameters or for sharing configurations with others. Here's an example YAML file with some common parameters:</p> <p><code>assets/params.yml</code></p> <div class=highlight><pre><span></span><code><span class=nt>input</span><span class=p>:</span><span class=w> </span><span class=s>'./assets/samplesheet_hg38.csv'</span>
+<span class=nt>contrasts</span><span class=p>:</span><span class=w> </span><span class=s>'./assets/contrasts_hg38.csv'</span>
 <span class=nt>genome</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">hg38</span>
 </code></pre></div> <p>You can then use these parameters with the <code>-params-file</code> option:</p> <div class=highlight><pre><span></span><code>tool_name<span class=w> </span>run<span class=w> </span>--output<span class=w> </span>/data/<span class=nv>$USER</span>/tool_name_project<span class=w> </span><span class=se>\</span>
 <span class=w>    </span>-params-file<span class=w> </span>assets/params.yml
