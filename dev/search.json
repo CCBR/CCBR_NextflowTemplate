@@ -1,0 +1,477 @@
+[
+  {
+    "objectID": "user-guide/troubleshooting.html",
+    "href": "user-guide/troubleshooting.html",
+    "title": "Troubleshooting",
+    "section": "",
+    "text": "This should include basic information on how to troubleshoot the pipeline. It should also include the main pipeliner developers contact information for users to utilize, as needed.",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "user-guide/troubleshooting.html#email",
+    "href": "user-guide/troubleshooting.html#email",
+    "title": "Troubleshooting",
+    "section": "1.1 Email",
+    "text": "1.1 Email\nCheck your email for an email regarding pipeline failure. You will receive an email from slurm@biowulf.nih.gov with the subject: Slurm Job_id=[#] Name=CARLISLE Failed, Run time [time], FAILED, ExitCode 1",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "user-guide/troubleshooting.html#review-the-log-files",
+    "href": "user-guide/troubleshooting.html#review-the-log-files",
+    "title": "Troubleshooting",
+    "section": "1.2 Review the log files",
+    "text": "1.2 Review the log files\nReview the logs in two ways:\n\nReview the master slurm file: This file will be found in the /path/to/results/dir/ and titled slurm-[jobid].out. Reviewing this file will tell you what rule errored, and for any local SLURM jobs, provide error details\nReview the individual rule log files: After reviewing the master slurm-file, review the specific rules that failed within the /path/to/results/dir/logs/. Each rule will include a .err and .out file, with the following formatting: {rulename}.{masterjobID}.{individualruleID}.{wildcards from the rule}.{out or err}",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "user-guide/troubleshooting.html#restart-the-run",
+    "href": "user-guide/troubleshooting.html#restart-the-run",
+    "title": "Troubleshooting",
+    "section": "1.3 Restart the run",
+    "text": "1.3 Restart the run\nAfter addressing the issue, unlock the output directory, perform another dry-run and check the status of the pipeline, then resubmit to the cluster.\n#unlock dir\nbash ./data/CCBR_Pipeliner/Pipelines/CARLISLE/carlisle --runmode=unlock --workdir=/path/to/output/dir\n\n#perform dry-run\nbash ./data/CCBR_Pipeliner/Pipelines/CARLISLE/carlisle --runmode=dryrun --workdir=/path/to/output/dir\n\n#submit to cluster\nbash ./data/CCBR_Pipeliner/Pipelines/CARLISLE/carlisle --runmode=run --workdir=/path/to/output/dir",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "user-guide/troubleshooting.html#contact-information",
+    "href": "user-guide/troubleshooting.html#contact-information",
+    "title": "Troubleshooting",
+    "section": "1.4 Contact information",
+    "text": "1.4 Contact information\nIf after troubleshooting, the error cannot be resolved, or if a bug is found, please create an issue and send and email to Samantha Chill.",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "Troubleshooting"
+    ]
+  },
+  {
+    "objectID": "user-guide/run.html",
+    "href": "user-guide/run.html",
+    "title": "3. Running the Pipeline",
+    "section": "",
+    "text": "This should include all information about the various run commands provided within the pipeline.",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "3. Running the Pipeline"
+    ]
+  },
+  {
+    "objectID": "user-guide/run.html#pipeline-overview",
+    "href": "user-guide/run.html#pipeline-overview",
+    "title": "3. Running the Pipeline",
+    "section": "3.1 Pipeline Overview",
+    "text": "3.1 Pipeline Overview\nThe Snakemake workflow has a multiple options:\nUsage: bash ./data/CCBR_Pipeliner/Pipelines/CARLISLE/carlisle -m/--runmode=&lt;RUNMODE&gt; -w/--workdir=&lt;WORKDIR&gt;\n1.  RUNMODE: [Type: String] Valid options:\n    *) init : initialize workdir\n    *) run : run with slurm\n    *) reset : DELETE workdir dir and re-init it\n    *) dryrun : dry run snakemake to generate DAG\n    *) unlock : unlock workdir if locked by snakemake\n    *) runlocal : run without submitting to sbatch\n    *) testrun: run on cluster with included test dataset\n2.  WORKDIR: [Type: String]: Absolute or relative path to the output folder with write permissions.",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "3. Running the Pipeline"
+    ]
+  },
+  {
+    "objectID": "user-guide/run.html#commands-explained",
+    "href": "user-guide/run.html#commands-explained",
+    "title": "3. Running the Pipeline",
+    "section": "3.2 Commands explained",
+    "text": "3.2 Commands explained\nThe following explains each of the command options:\n\nPreparation Commands\n\ninit (REQUIRED): This must be performed before any Snakemake run (dry, local, cluster) can be performed. This will copy the necessary config, manifest and Snakefiles needed to run the pipeline to the provided output directory.\ndryrun (OPTIONAL): This is an optional step, to be performed before any Snakemake run (local, cluster). This will check for errors within the pipeline, and ensure that you have read/write access to the files needed to run the full pipeline.\n\nProcessing Commands\n\nlocal: This will run the pipeline on a local node. NOTE: This should only be performed on an interactive node.\nrun: This will submit a master job to the cluster, and subsequent sub-jobs as needed to complete the workflow. An email will be sent when the pipeline begins, if there are any errors, and when it completes.\n\nOther Commands (All optional)\n\nunlock: This will unlock the pipeline if an error caused it to stop in the middle of a run.\ntestrun: This will run a test of the pipeline with test data\n\n\nTo run any of these commands, follow the the syntax:\nbash ./data/CCBR_Pipeliner/Pipelines/CARLISLE/carlisle --runmode=COMMAND --workdir=/path/to/output/dir",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "3. Running the Pipeline"
+    ]
+  },
+  {
+    "objectID": "user-guide/run.html#typical-workflow",
+    "href": "user-guide/run.html#typical-workflow",
+    "title": "3. Running the Pipeline",
+    "section": "3.3 Typical Workflow",
+    "text": "3.3 Typical Workflow\nA typical command workflow, running on the cluster, is as follows:\nbash ./data/CCBR_Pipeliner/Pipelines/CARLISLE/carlisle --runmode=init --workdir=/path/to/output/dir\n\nbash ./data/CCBR_Pipeliner/Pipelines/CARLISLE/carlisle --runmode=dryrun --workdir=/path/to/output/dir\n\nbash ./data/CCBR_Pipeliner/Pipelines/CARLISLE/carlisle --runmode=run --workdir=/path/to/output/dir",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "3. Running the Pipeline"
+    ]
+  },
+  {
+    "objectID": "user-guide/params.html",
+    "href": "user-guide/params.html",
+    "title": "How to set pipeline parameters",
+    "section": "",
+    "text": "Any parameter can be set via the CLI using two hyphens (--) followed by the parameter name and value. For example:\ntool_name run --output /data/$USER/tool_name_project \\\n    --input assets/samplesheet_hg38.csv \\\n    --contrasts assets/contrasts_hg38.csv \\\n    --genome hg38\nAlternatively, you can create a YAML file with the parameters you want to set. This is useful for managing multiple parameters or for sharing configurations with others. Here’s an example YAML file with some common parameters:\nassets/params.yml\ninput: './assets/samplesheet_hg38.csv'\ncontrasts: './assets/contrasts_hg38.csv'\ngenome: hg38\nYou can then use these parameters with the -params-file option:\ntool_name run --output /data/$USER/tool_name_project \\\n    -params-file assets/params.yml\nView the full list of pipeline parameters below."
+  },
+  {
+    "objectID": "user-guide/params.html#inputoutput-options",
+    "href": "user-guide/params.html#inputoutput-options",
+    "title": "How to set pipeline parameters",
+    "section": "Input/output options",
+    "text": "Input/output options\nDefine where the pipeline should find input data and save output data.\n\n\n\n\n\n\n\n\n\n\n\nParameter\nDescription\nType\nDefault\nRequired\nHidden\n\n\n\n\ninput\nPath to comma-separated file containing information about the samples in the experiment. \nstring\n\nTrue\n\n\n\ngenome\nReference genome (e.g. hg38, mm10). This can be a genome in conf/genomes.config, or see ‘Custom genome options’ to build a custom reference from a fasta & gtf file.\nstring\n\n\n\n\n\noutputDir\n\nstring\nresults\n\nTrue\n\n\ntracedir\n\nstring\n${outputDir}/pipeline_info\n\nTrue\n\n\npublish_dir_mode\nHow to publish files to the results directory. This parameter sets Nextflow’s workflow.output.mode configuration option. (accepted: link|copy|move|copyNoFollow|rellink|symlink)\nstring\nlink"
+  },
+  {
+    "objectID": "user-guide/getting-started.html",
+    "href": "user-guide/getting-started.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This should set the stage for all of the pipeline requirements. Examples are listed below.",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "1. Getting Started"
+    ]
+  },
+  {
+    "objectID": "user-guide/getting-started.html#getting-started",
+    "href": "user-guide/getting-started.html#getting-started",
+    "title": "Overview",
+    "section": "1. Getting Started",
+    "text": "1. Getting Started",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "1. Getting Started"
+    ]
+  },
+  {
+    "objectID": "user-guide/getting-started.html#introduction",
+    "href": "user-guide/getting-started.html#introduction",
+    "title": "Overview",
+    "section": "1.1 Introduction",
+    "text": "1.1 Introduction\nThe CARLISLE Pipelie beings with raw FASTQ files and performs trimming followed by alignment using BOWTIE2. Data is then normalized through either the use of an user-species species (IE E.Coli) spike-in control or through the determined library size. Peaks are then called using MACS2, SEACR, and GoPEAKS with various options selected by the user. Peaks are then annotated, and summarized into reports. If designated, differential analysis is performed using DESEQ2. QC reports are also generated with each project using FASTQC and MULTIQC. Annotations are added using HOMER and ROSE. GSEA Enrichment analysis predictions are added using CHIPENRICH.\nThe following are sub-commands used within CARLISLE:\n\ninitialize: initialize the pipeline\ndryrun: predict the binding of peptides to any MHC molecule\ncluster: execute the pipeline on the Biowulf HPC\nlocal: execute a local, interactive, session\ngit: execute GitHub actions\nunlock: unlock directory\nDAG: create DAG report\nreport: create SNAKEMAKE report\ntestrun: copies test manifests and files to WORKDIR",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "1. Getting Started"
+    ]
+  },
+  {
+    "objectID": "user-guide/getting-started.html#setup-dependencies",
+    "href": "user-guide/getting-started.html#setup-dependencies",
+    "title": "Overview",
+    "section": "1.2 Setup Dependencies",
+    "text": "1.2 Setup Dependencies\nCARLISLE has several dependencies listed below. These dependencies can be installed by a sysadmin. All dependencies will be automatically loaded if running from Biowulf.\n\nbedtools: “bedtools/2.30.0”\nbedops: “bedops/2.4.40”",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "1. Getting Started"
+    ]
+  },
+  {
+    "objectID": "user-guide/getting-started.html#login-to-the-cluster",
+    "href": "user-guide/getting-started.html#login-to-the-cluster",
+    "title": "Overview",
+    "section": "1.3 Login to the cluster",
+    "text": "1.3 Login to the cluster\nCARLISLE has been exclusively tested on Biowulf HPC. Login to the cluster’s head node and move into the pipeline location.\n# ssh into cluster's head node\nssh -Y $USER@biowulf.nih.gov",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "1. Getting Started"
+    ]
+  },
+  {
+    "objectID": "user-guide/getting-started.html#load-an-interactive-session",
+    "href": "user-guide/getting-started.html#load-an-interactive-session",
+    "title": "Overview",
+    "section": "1.4 Load an interactive session",
+    "text": "1.4 Load an interactive session\nAn interactive session should be started before performing any of the pipeline sub-commands, even if the pipeline is to be executed on the cluster.\n# Grab an interactive node\nsinteractive --time=12:00:00 --mem=8gb  --cpus-per-task=4 --pty bash",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "1. Getting Started"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Nextflow Template ",
+    "section": "",
+    "text": "CCBR template for creating Nextflow pipelines \n\n \nSee the website for detailed information, documentation, and examples: https://ccbr.github.io/TOOL_NAME/\n\n\n\nCreate a new repository from this template using either of these options:\n\nThe GitHub web interface: Click “Use this template” and “Create a new repository”, then choose an owner (e.g. CCBR or another organization) and the repository name as the new tool’s name.\nThe GitHub command line interface: Replace OWNER/TOOL_NAME with your organization (e.g. CCBR) and the actual tool name.\ngh repo create OWNER/TOOL_NAME \\\n   --description \"One-line description of your tool\" \\\n   --public \\\n   --template CCBR/CCBR_NextflowTemplate \\\n   --confirm\n\nRead and follow the contributing guidelines in .github/CONTRIBUTING.md. Be sure to install pre-commit and its hooks before making any commits.\nChange all instances of TOOL_NAME and tool_name throughout the repo with the actual tool name. Replace TOOL_NAME with the all-caps version (refers to the GitHub repo name) and tool_name with the lowercase version (refers to the command-line interface). Places include:\n\n.github/CONTRIBUTING.md\n.github/ISSUE_TEMPLATE/bug_report.yml\n.github/ISSUE_TEMPLATE/config.yml\n.github/workflows/build.yml\nbin/tool_name\nCHANGELOG.md\nCITATION.cff\nREADME.md\nmain.nf\ndocs/_quarto.yml\nnextflow.config\npyproject.toml\nsrc/__main__.py\nEdit pyproject.toml and nextflow.config with correct metadata for your tool. You will likely need to change:\n\nauthor names and emails\ndependencies\nproject URLs\n\nWrite your nextflow workflow.\n\nWhere possible, reuse existing modules and subworklows from CCBR/nf-modules1. Also consider contributing new modules & subworkflows to that repository!\n\nWrite your documentation in docs/ and enable GitHub Pages.\n\nIn settings, go to General &gt; Pages and select the gh-pages branch. Quarto will render your site (with quarto-version-selector for versioned docs) under the gh-pages branch, and GitHub Pages will make it available at https://OWNER.github.io/TOOL_NAME.\n\nEdit the README:\n\nChange the title and description.\nDelete the section Using this template.\n\nYou can look for instances of TOOL_NAME in case you missed any with grep:\ngrep -ir \"TOOL_NAME\" .\nIf your repo is not part of CCBR, you will also want to look for instances of “CCBR” and “CCR Collaborative Bioinformatics Resource” and replace them with your organization.\ngrep -ir \"CCBR\\|CCR\" .\n\nFor an example of this template in action, see the CHAMPAGNE repo. For a list of all repositories that were created from this template, see this GitHub search.\n\n\n\nInstall the tool in edit mode:\npip3 install -e .\nView CLI options:\ntool_name --help\nNavigate to your project directory and initialize required config files:\ntool_name init\nRun the example\ntool_name run --input \"Hello world\"\n\n\n\ndag\n\n\n\n\n\nCome across a bug? Open an issue and include a minimal reproducible example.\nHave a question? Ask it in discussions.\nWant to contribute to this project? Check out the contributing guidelines.\n\n\n\nThis repo was originally generated from the CCBR Nextflow Template. The template takes inspiration from nektool2 and the nf-core template. If you plan to contribute your pipeline to nf-core, don’t use this template – instead follow nf-core’s instructions3.",
+    "crumbs": [
+      "Home",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "index.html#using-this-template",
+    "href": "index.html#using-this-template",
+    "title": "Nextflow Template ",
+    "section": "",
+    "text": "Create a new repository from this template using either of these options:\n\nThe GitHub web interface: Click “Use this template” and “Create a new repository”, then choose an owner (e.g. CCBR or another organization) and the repository name as the new tool’s name.\nThe GitHub command line interface: Replace OWNER/TOOL_NAME with your organization (e.g. CCBR) and the actual tool name.\ngh repo create OWNER/TOOL_NAME \\\n   --description \"One-line description of your tool\" \\\n   --public \\\n   --template CCBR/CCBR_NextflowTemplate \\\n   --confirm\n\nRead and follow the contributing guidelines in .github/CONTRIBUTING.md. Be sure to install pre-commit and its hooks before making any commits.\nChange all instances of TOOL_NAME and tool_name throughout the repo with the actual tool name. Replace TOOL_NAME with the all-caps version (refers to the GitHub repo name) and tool_name with the lowercase version (refers to the command-line interface). Places include:\n\n.github/CONTRIBUTING.md\n.github/ISSUE_TEMPLATE/bug_report.yml\n.github/ISSUE_TEMPLATE/config.yml\n.github/workflows/build.yml\nbin/tool_name\nCHANGELOG.md\nCITATION.cff\nREADME.md\nmain.nf\ndocs/_quarto.yml\nnextflow.config\npyproject.toml\nsrc/__main__.py\nEdit pyproject.toml and nextflow.config with correct metadata for your tool. You will likely need to change:\n\nauthor names and emails\ndependencies\nproject URLs\n\nWrite your nextflow workflow.\n\nWhere possible, reuse existing modules and subworklows from CCBR/nf-modules1. Also consider contributing new modules & subworkflows to that repository!\n\nWrite your documentation in docs/ and enable GitHub Pages.\n\nIn settings, go to General &gt; Pages and select the gh-pages branch. Quarto will render your site (with quarto-version-selector for versioned docs) under the gh-pages branch, and GitHub Pages will make it available at https://OWNER.github.io/TOOL_NAME.\n\nEdit the README:\n\nChange the title and description.\nDelete the section Using this template.\n\nYou can look for instances of TOOL_NAME in case you missed any with grep:\ngrep -ir \"TOOL_NAME\" .\nIf your repo is not part of CCBR, you will also want to look for instances of “CCBR” and “CCR Collaborative Bioinformatics Resource” and replace them with your organization.\ngrep -ir \"CCBR\\|CCR\" .\n\nFor an example of this template in action, see the CHAMPAGNE repo. For a list of all repositories that were created from this template, see this GitHub search.",
+    "crumbs": [
+      "Home",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "Nextflow Template ",
+    "section": "",
+    "text": "Install the tool in edit mode:\npip3 install -e .\nView CLI options:\ntool_name --help\nNavigate to your project directory and initialize required config files:\ntool_name init\nRun the example\ntool_name run --input \"Hello world\"\n\n\n\ndag",
+    "crumbs": [
+      "Home",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "index.html#help-contributing",
+    "href": "index.html#help-contributing",
+    "title": "Nextflow Template ",
+    "section": "",
+    "text": "Come across a bug? Open an issue and include a minimal reproducible example.\nHave a question? Ask it in discussions.\nWant to contribute to this project? Check out the contributing guidelines.",
+    "crumbs": [
+      "Home",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "index.html#references",
+    "href": "index.html#references",
+    "title": "Nextflow Template ",
+    "section": "",
+    "text": "This repo was originally generated from the CCBR Nextflow Template. The template takes inspiration from nektool2 and the nf-core template. If you plan to contribute your pipeline to nf-core, don’t use this template – instead follow nf-core’s instructions3.",
+    "crumbs": [
+      "Home",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Nextflow Template ",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSee also our reusable modules and subworkflows for CCBR nextflow pipelines: https://github.com/CCBR/nf-modules↩︎\nnektool https://github.com/beardymcjohnface/nektool↩︎\ninstructions for nf-core pipelines https://nf-co.re/docs/contributing/tutorials/creating_with_nf_core↩︎",
+    "crumbs": [
+      "Home",
+      "Background"
+    ]
+  },
+  {
+    "objectID": "contributing.html",
+    "href": "contributing.html",
+    "title": "Contributing to TOOL_NAME",
+    "section": "",
+    "text": "If you want to make a change, it’s a good idea to first open an issue and make sure someone from the team agrees that it’s needed.\nIf you’ve decided to work on an issue, assign yourself to the issue so others will know you’re working on it.\n\n\n\nWe use GitHub Flow as our collaboration process. Follow the steps below for detailed instructions on contributing changes to TOOL_NAME.\n\n\n\nGitHub Flow diagram\n\n\n\n\nIf you are a member of CCBR, you can clone this repository to your computer or development environment. Otherwise, you will first need to fork the repo and clone your fork. You only need to do this step once.\ngit clone https://github.com/CCBR/TOOL_NAME\n\nCloning into ‘TOOL_NAME’…  remote: Enumerating objects: 1136, done.  remote: Counting objects: 100% (463/463), done.  remote: Compressing objects: 100% (357/357), done.  remote: Total 1136 (delta 149), reused 332 (delta 103), pack-reused 673  Receiving objects: 100% (1136/1136), 11.01 MiB | 9.76 MiB/s, done.  Resolving deltas: 100% (530/530), done. \n\ncd TOOL_NAME\n\n\n\n\nInstall nextflow and singularity or docker if needed (biowulf already has these available as modules).\nInstall the python dependencies with pip\npip install .\nIf you’re developing on biowulf, you can use our shared conda environment which already has these dependencies installed\n. \"/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh\"\nconda activate py311\nInstall pre-commit if you don’t already have it. Then from the repo’s root directory, run\npre-commit install\nThis will install the repo’s pre-commit hooks. You’ll only need to do this step the first time you clone the repo.\n\n\n\n\nCreate a Git branch for your pull request (PR). Give the branch a descriptive name for the changes you will make, such as iss-10 if it is for a specific issue.\n# create a new branch and switch to it\ngit branch iss-10\ngit switch iss-10\n\nSwitched to a new branch ‘iss-10’\n\n\n\n\nEdit the code, write and run tests, and update the documentation as needed.\n\n\nChanges to the python package code will also need unit tests to demonstrate that the changes work as intended. We write unit tests with pytest and store them in the tests/ subdirectory. Run the tests with python -m pytest.\nIf you change the workflow, please run the workflow with the test profile and make sure your new feature or bug fix works as intended.\n\n\n\nIf you have added a new feature or changed the API of an existing feature, you will likely need to update the documentation in docs/.\n\n\n\n\nIf you’re not sure how often you should commit or what your commits should consist of, we recommend following the “atomic commits” principle where each commit contains one new feature, fix, or task. Learn more about atomic commits here: https://www.freshconsulting.com/insights/blog/atomic-commits/\nFirst, add the files that you changed to the staging area:\ngit add path/to/changed/files/\nThen make the commit. Your commit message should follow the Conventional Commits specification. Briefly, each commit should start with one of the approved types such as feat, fix, docs, etc. followed by a description of the commit. Take a look at the Conventional Commits specification for more detailed information about how to write commit messages.\ngit commit -m 'feat: create function for awesome feature'\npre-commit will enforce that your commit message and the code changes are styled correctly and will attempt to make corrections if needed.\n\nCheck for added large files……………………………………….Passed  Fix End of Files…………………………………………………Passed  Trim Trailing Whitespace………………………………………….Failed \n\nhook id: trailing-whitespace \nexit code: 1 \nfiles were modified by this hook  &gt;  Fixing path/to/changed/files/file.txt  &gt;  codespell……………………………………………………….Passed  style-files……………………………………(no files to check)Skipped  readme-rmd-rendered…………………………….(no files to check)Skipped  use-tidy-description……………………………(no files to check)Skipped \n\n\nIn the example above, one of the hooks modified a file in the proposed commit, so the pre-commit check failed. You can run git diff to see the changes that pre-commit made and git status to see which files were modified. To proceed with the commit, re-add the modified file(s) and re-run the commit command:\ngit add path/to/changed/files/file.txt\ngit commit -m 'feat: create function for awesome feature'\nThis time, all the hooks either passed or were skipped (e.g. hooks that only run on R code will not run if no R files were committed). When the pre-commit check is successful, the usual commit success message will appear after the pre-commit messages showing that the commit was created.\n\nCheck for added large files……………………………………….Passed  Fix End of Files…………………………………………………Passed  Trim Trailing Whitespace………………………………………….Passed  codespell……………………………………………………….Passed  style-files……………………………………(no files to check)Skipped  readme-rmd-rendered…………………………….(no files to check)Skipped  use-tidy-description……………………………(no files to check)Skipped  Conventional Commit………………………………………………Passed  &gt; [iss-10 9ff256e] feat: create function for awesome feature  1 file changed, 22 insertions(+), 3 deletions(-) \n\nFinally, push your changes to GitHub:\ngit push\nIf this is the first time you are pushing this branch, you may have to explicitly set the upstream branch:\ngit push --set-upstream origin iss-10\n\nEnumerating objects: 7, done.  Counting objects: 100% (7/7), done.  Delta compression using up to 10 threads  Compressing objects: 100% (4/4), done.  Writing objects: 100% (4/4), 648 bytes | 648.00 KiB/s, done.  Total 4 (delta 3), reused 0 (delta 0), pack-reused 0  remote: Resolving deltas: 100% (3/3), completed with 3 local objects.  remote:  remote: Create a pull request for ‘iss-10’ on GitHub by visiting:  remote: https://github.com/CCBR/TOOL_NAME/pull/new/iss-10  remote:  To https://github.com/CCBR/TOOL_NAME  &gt;  &gt; [new branch] iss-10 -&gt; iss-10  branch ‘iss-10’ set up to track ‘origin/iss-10’. \n\nWe recommend pushing your commits often so they will be backed up on GitHub. You can view the files in your branch on GitHub at https://github.com/CCBR/TOOL_NAME/tree/&lt;your-branch-name&gt; (replace &lt;your-branch-name&gt; with the actual name of your branch).\n\n\n\nOnce your branch is ready, create a PR on GitHub: https://github.com/CCBR/TOOL_NAME/pull/new/\nSelect the branch you just pushed:\n\n\n\nCreate a new PR from your branch\n\n\nEdit the PR title and description. The title should briefly describe the change. Follow the comments in the template to fill out the body of the PR, and you can delete the comments (everything between &lt;!-- and --&gt;) as you go. Be sure to fill out the checklist, checking off items as you complete them or striking through any irrelevant items. When you’re ready, click ‘Create pull request’ to open it.\n\n\n\nOpen the PR after editing the title and description\n\n\nOptionally, you can mark the PR as a draft if you’re not yet ready for it to be reviewed, then change it later when you’re ready.\n\n\n\nWe will do our best to follow the tidyverse code review principles: https://code-review.tidyverse.org/. The reviewer may suggest that you make changes before accepting your PR in order to improve the code quality or style. If that’s the case, continue to make changes in your branch and push them to GitHub, and they will appear in the PR.\nOnce the PR is approved, the maintainer will merge it and the issue(s) the PR links will close automatically. Congratulations and thank you for your contribution!\n\n\n\nAfter your PR has been merged, update your local clone of the repo by switching to the main branch and pulling the latest changes:\ngit checkout main\ngit pull\nIt’s a good idea to run git pull before creating a new branch so it will start from the most recent commits in main.\n\n\n\n\n\nGitHub Flow\nsemantic versioning guidelines\nchangelog guidelines\ntidyverse code review principles\nreproducible examples\nnf-core extensions for VS Code",
+    "crumbs": [
+      "Home",
+      "FAQ",
+      "How to contribute"
+    ]
+  },
+  {
+    "objectID": "contributing.html#proposing-changes-with-issues",
+    "href": "contributing.html#proposing-changes-with-issues",
+    "title": "Contributing to TOOL_NAME",
+    "section": "",
+    "text": "If you want to make a change, it’s a good idea to first open an issue and make sure someone from the team agrees that it’s needed.\nIf you’ve decided to work on an issue, assign yourself to the issue so others will know you’re working on it.",
+    "crumbs": [
+      "Home",
+      "FAQ",
+      "How to contribute"
+    ]
+  },
+  {
+    "objectID": "contributing.html#pull-request-process",
+    "href": "contributing.html#pull-request-process",
+    "title": "Contributing to TOOL_NAME",
+    "section": "",
+    "text": "We use GitHub Flow as our collaboration process. Follow the steps below for detailed instructions on contributing changes to TOOL_NAME.\n\n\n\nGitHub Flow diagram\n\n\n\n\nIf you are a member of CCBR, you can clone this repository to your computer or development environment. Otherwise, you will first need to fork the repo and clone your fork. You only need to do this step once.\ngit clone https://github.com/CCBR/TOOL_NAME\n\nCloning into ‘TOOL_NAME’…  remote: Enumerating objects: 1136, done.  remote: Counting objects: 100% (463/463), done.  remote: Compressing objects: 100% (357/357), done.  remote: Total 1136 (delta 149), reused 332 (delta 103), pack-reused 673  Receiving objects: 100% (1136/1136), 11.01 MiB | 9.76 MiB/s, done.  Resolving deltas: 100% (530/530), done. \n\ncd TOOL_NAME\n\n\n\n\nInstall nextflow and singularity or docker if needed (biowulf already has these available as modules).\nInstall the python dependencies with pip\npip install .\nIf you’re developing on biowulf, you can use our shared conda environment which already has these dependencies installed\n. \"/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh\"\nconda activate py311\nInstall pre-commit if you don’t already have it. Then from the repo’s root directory, run\npre-commit install\nThis will install the repo’s pre-commit hooks. You’ll only need to do this step the first time you clone the repo.\n\n\n\n\nCreate a Git branch for your pull request (PR). Give the branch a descriptive name for the changes you will make, such as iss-10 if it is for a specific issue.\n# create a new branch and switch to it\ngit branch iss-10\ngit switch iss-10\n\nSwitched to a new branch ‘iss-10’\n\n\n\n\nEdit the code, write and run tests, and update the documentation as needed.\n\n\nChanges to the python package code will also need unit tests to demonstrate that the changes work as intended. We write unit tests with pytest and store them in the tests/ subdirectory. Run the tests with python -m pytest.\nIf you change the workflow, please run the workflow with the test profile and make sure your new feature or bug fix works as intended.\n\n\n\nIf you have added a new feature or changed the API of an existing feature, you will likely need to update the documentation in docs/.\n\n\n\n\nIf you’re not sure how often you should commit or what your commits should consist of, we recommend following the “atomic commits” principle where each commit contains one new feature, fix, or task. Learn more about atomic commits here: https://www.freshconsulting.com/insights/blog/atomic-commits/\nFirst, add the files that you changed to the staging area:\ngit add path/to/changed/files/\nThen make the commit. Your commit message should follow the Conventional Commits specification. Briefly, each commit should start with one of the approved types such as feat, fix, docs, etc. followed by a description of the commit. Take a look at the Conventional Commits specification for more detailed information about how to write commit messages.\ngit commit -m 'feat: create function for awesome feature'\npre-commit will enforce that your commit message and the code changes are styled correctly and will attempt to make corrections if needed.\n\nCheck for added large files……………………………………….Passed  Fix End of Files…………………………………………………Passed  Trim Trailing Whitespace………………………………………….Failed \n\nhook id: trailing-whitespace \nexit code: 1 \nfiles were modified by this hook  &gt;  Fixing path/to/changed/files/file.txt  &gt;  codespell……………………………………………………….Passed  style-files……………………………………(no files to check)Skipped  readme-rmd-rendered…………………………….(no files to check)Skipped  use-tidy-description……………………………(no files to check)Skipped \n\n\nIn the example above, one of the hooks modified a file in the proposed commit, so the pre-commit check failed. You can run git diff to see the changes that pre-commit made and git status to see which files were modified. To proceed with the commit, re-add the modified file(s) and re-run the commit command:\ngit add path/to/changed/files/file.txt\ngit commit -m 'feat: create function for awesome feature'\nThis time, all the hooks either passed or were skipped (e.g. hooks that only run on R code will not run if no R files were committed). When the pre-commit check is successful, the usual commit success message will appear after the pre-commit messages showing that the commit was created.\n\nCheck for added large files……………………………………….Passed  Fix End of Files…………………………………………………Passed  Trim Trailing Whitespace………………………………………….Passed  codespell……………………………………………………….Passed  style-files……………………………………(no files to check)Skipped  readme-rmd-rendered…………………………….(no files to check)Skipped  use-tidy-description……………………………(no files to check)Skipped  Conventional Commit………………………………………………Passed  &gt; [iss-10 9ff256e] feat: create function for awesome feature  1 file changed, 22 insertions(+), 3 deletions(-) \n\nFinally, push your changes to GitHub:\ngit push\nIf this is the first time you are pushing this branch, you may have to explicitly set the upstream branch:\ngit push --set-upstream origin iss-10\n\nEnumerating objects: 7, done.  Counting objects: 100% (7/7), done.  Delta compression using up to 10 threads  Compressing objects: 100% (4/4), done.  Writing objects: 100% (4/4), 648 bytes | 648.00 KiB/s, done.  Total 4 (delta 3), reused 0 (delta 0), pack-reused 0  remote: Resolving deltas: 100% (3/3), completed with 3 local objects.  remote:  remote: Create a pull request for ‘iss-10’ on GitHub by visiting:  remote: https://github.com/CCBR/TOOL_NAME/pull/new/iss-10  remote:  To https://github.com/CCBR/TOOL_NAME  &gt;  &gt; [new branch] iss-10 -&gt; iss-10  branch ‘iss-10’ set up to track ‘origin/iss-10’. \n\nWe recommend pushing your commits often so they will be backed up on GitHub. You can view the files in your branch on GitHub at https://github.com/CCBR/TOOL_NAME/tree/&lt;your-branch-name&gt; (replace &lt;your-branch-name&gt; with the actual name of your branch).\n\n\n\nOnce your branch is ready, create a PR on GitHub: https://github.com/CCBR/TOOL_NAME/pull/new/\nSelect the branch you just pushed:\n\n\n\nCreate a new PR from your branch\n\n\nEdit the PR title and description. The title should briefly describe the change. Follow the comments in the template to fill out the body of the PR, and you can delete the comments (everything between &lt;!-- and --&gt;) as you go. Be sure to fill out the checklist, checking off items as you complete them or striking through any irrelevant items. When you’re ready, click ‘Create pull request’ to open it.\n\n\n\nOpen the PR after editing the title and description\n\n\nOptionally, you can mark the PR as a draft if you’re not yet ready for it to be reviewed, then change it later when you’re ready.\n\n\n\nWe will do our best to follow the tidyverse code review principles: https://code-review.tidyverse.org/. The reviewer may suggest that you make changes before accepting your PR in order to improve the code quality or style. If that’s the case, continue to make changes in your branch and push them to GitHub, and they will appear in the PR.\nOnce the PR is approved, the maintainer will merge it and the issue(s) the PR links will close automatically. Congratulations and thank you for your contribution!\n\n\n\nAfter your PR has been merged, update your local clone of the repo by switching to the main branch and pulling the latest changes:\ngit checkout main\ngit pull\nIt’s a good idea to run git pull before creating a new branch so it will start from the most recent commits in main.",
+    "crumbs": [
+      "Home",
+      "FAQ",
+      "How to contribute"
+    ]
+  },
+  {
+    "objectID": "contributing.html#helpful-links-for-more-information",
+    "href": "contributing.html#helpful-links-for-more-information",
+    "title": "Contributing to TOOL_NAME",
+    "section": "",
+    "text": "GitHub Flow\nsemantic versioning guidelines\nchangelog guidelines\ntidyverse code review principles\nreproducible examples\nnf-core extensions for VS Code",
+    "crumbs": [
+      "Home",
+      "FAQ",
+      "How to contribute"
+    ]
+  },
+  {
+    "objectID": "changelog.html",
+    "href": "changelog.html",
+    "title": "Changelog",
+    "section": "",
+    "text": "change 1\nexample 2\n\n\n\n\n\nnew feat 1\n\n\n\n\n\ndescription of bug fixed",
+    "crumbs": [
+      "Home",
+      "Changelog"
+    ]
+  },
+  {
+    "objectID": "changelog.html#tool_name-development-version",
+    "href": "changelog.html#tool_name-development-version",
+    "title": "Changelog",
+    "section": "",
+    "text": "change 1\nexample 2\n\n\n\n\n\nnew feat 1\n\n\n\n\n\ndescription of bug fixed",
+    "crumbs": [
+      "Home",
+      "Changelog"
+    ]
+  },
+  {
+    "objectID": "changelog.html#tool_name-v0.1.0",
+    "href": "changelog.html#tool_name-v0.1.0",
+    "title": "Changelog",
+    "section": "TOOL_NAME v0.1.0",
+    "text": "TOOL_NAME v0.1.0\nThis is the first release of TOOL_NAME 🎉",
+    "crumbs": [
+      "Home",
+      "Changelog"
+    ]
+  },
+  {
+    "objectID": "contributors.html",
+    "href": "contributors.html",
+    "title": "Contributors",
+    "section": "",
+    "text": "Contributors\n\n\n\n\n\n\n\n\nKelly Sovacool, PhD\nAlec Silver\nSamantha\n\n\n\nView the contributors graph on GitHub for more details.",
+    "crumbs": [
+      "Home",
+      "FAQ",
+      "Contributors"
+    ]
+  },
+  {
+    "objectID": "user-guide/genomes.html",
+    "href": "user-guide/genomes.html",
+    "title": "Genomes",
+    "section": "",
+    "text": "These genomes are available on biowulf.\n\n\nThese genomes can be passed to the --genome parameter.\n\n\n\nspecies: Homo sapiens\nfasta: ${params.index_dir}/hg38_basic/hg38_basic.fa\ngenes_gtf: ${params.index_dir}/hg38_basic/genes.gtf\nblacklist_index: ${params.index_dir}/hg38_basic/indexes/blacklist/hg38.blacklist_v3.chrM.chr_rDNA.*\nreference_index: ${params.index_dir}/hg38_basic/bwa_index/hg38*\nchromosomes_dir: ${params.index_dir}/hg38_basic/Chromsomes/\nchrom_sizes: ${params.index_dir}/hg38_basic/indexes/hg38.fa.sizes\ngene_info: ${params.index_dir}/hg38_basic/geneinfo.bed\neffective_genome_size: 2700000000\nmeme_motifs: ${projectDir}/assets/HOCOMOCOv11_core_HUMAN_mono_meme_format.tar.gz\nbioc_txdb: TxDb.Hsapiens.UCSC.hg38.knownGene\nbioc_annot: org.Hs.eg.db\n\n\n\n\n\nspecies: Homo sapiens\nfasta: ${params.index_dir}/hg19_basic/hg19.fa\ngenes_gtf: ${params.index_dir}/hg19_basic/genes.gtf\nblacklist_index: ${params.index_dir}/hg19_basic/indexes/blacklist/hg19.blacklist.*\nreference_index: ${params.index_dir}/hg19_basic/bwa_index/hg19.*\nchromosomes_dir: ${params.index_dir}/hg19_basic/Chromosomes\nchrom_sizes: ${params.index_dir}/hg19_basic/Chromosomes/chrom.sizes\ngene_info: ${params.index_dir}/hg19_basic/geneinfo.bed\neffective_genome_size: 2700000000\nmeme_motifs: ${projectDir}/assets/HOCOMOCOv11_core_HUMAN_mono_meme_format.tar.gz\nbioc_txdb: TxDb.Hsapiens.UCSC.hg38.knownGene\nbioc_annot: org.Hs.eg.db\n\n\n\n\n\nspecies: Mus musculus\nfasta: ${params.index_dir}/mm10_basic/mm10_basic.fa\ngenes_gtf: ${params.index_dir}/mm10_basic/genes.gtf\nblacklist_index: ${params.index_dir}/mm10_basic/indexes/blacklist/mm10.blacklist.chrM.chr_rDNA.*\nreference_index: ${params.index_dir}/mm10_basic/indexes/reference/mm10*\nchromosomes_dir: ${params.index_dir}/mm10_basic/Chromsomes/\nchrom_sizes: ${params.index_dir}/mm10_basic/indexes/mm10.fa.sizes\ngene_info: ${params.index_dir}/mm10_basic/geneinfo.bed\neffective_genome_size: 2400000000\nmeme_motifs: ${projectDir}/assets/HOCOMOCOv11_core_MOUSE_mono_meme_format.tar.gz\nbioc_txdb: TxDb.Mmusculus.UCSC.mm10.knownGene\nbioc_annot: org.Mmu.eg.db\n\n\n\n\n\nThese genomes can be passed to the --spike_genome parameter.\n\n\n\nspecies: Drosophila melanogaster\nfasta: ${params.index_dir}/dmelr6.32/indexes/dmelr6.32.fa\nreference_index: ${params.index_dir}/dmelr6.32/indexes/bwa/Drosophila_melanogaster.*\nblacklist_index: ${params.index_dir}/dmelr6.32/indexes/blacklist/dmelr6.32.blacklist.*\nblacklist_bed: ${params.index_dir}/dmelr6.32/indexes/dm6-blacklist.v2.no_chr.bed.gz\neffective_genome_size: 142573017\nchrom_sizes: ${params.index_dir}/dmelr6.32/chrom_dmelr6.28.sizes\n\n\n\n\n\nspecies: Escherichia coli K-12\nfasta: ${params.index_dir}/ecoli_k12/indexes/ecoli_k12.fa\nreference_index: ${params.index_dir}/ecoli_k12/indexes/ecoli_k12.*\nblacklist_bed: NO_FILE\neffective_genome_size: 4641652\nchrom_sizes: ${params.index_dir}/ecoli_k12/Chromosomes/chrom.sizes"
+  },
+  {
+    "objectID": "user-guide/genomes.html#supported-reference-genomes",
+    "href": "user-guide/genomes.html#supported-reference-genomes",
+    "title": "Genomes",
+    "section": "",
+    "text": "These genomes are available on biowulf.\n\n\nThese genomes can be passed to the --genome parameter.\n\n\n\nspecies: Homo sapiens\nfasta: ${params.index_dir}/hg38_basic/hg38_basic.fa\ngenes_gtf: ${params.index_dir}/hg38_basic/genes.gtf\nblacklist_index: ${params.index_dir}/hg38_basic/indexes/blacklist/hg38.blacklist_v3.chrM.chr_rDNA.*\nreference_index: ${params.index_dir}/hg38_basic/bwa_index/hg38*\nchromosomes_dir: ${params.index_dir}/hg38_basic/Chromsomes/\nchrom_sizes: ${params.index_dir}/hg38_basic/indexes/hg38.fa.sizes\ngene_info: ${params.index_dir}/hg38_basic/geneinfo.bed\neffective_genome_size: 2700000000\nmeme_motifs: ${projectDir}/assets/HOCOMOCOv11_core_HUMAN_mono_meme_format.tar.gz\nbioc_txdb: TxDb.Hsapiens.UCSC.hg38.knownGene\nbioc_annot: org.Hs.eg.db\n\n\n\n\n\nspecies: Homo sapiens\nfasta: ${params.index_dir}/hg19_basic/hg19.fa\ngenes_gtf: ${params.index_dir}/hg19_basic/genes.gtf\nblacklist_index: ${params.index_dir}/hg19_basic/indexes/blacklist/hg19.blacklist.*\nreference_index: ${params.index_dir}/hg19_basic/bwa_index/hg19.*\nchromosomes_dir: ${params.index_dir}/hg19_basic/Chromosomes\nchrom_sizes: ${params.index_dir}/hg19_basic/Chromosomes/chrom.sizes\ngene_info: ${params.index_dir}/hg19_basic/geneinfo.bed\neffective_genome_size: 2700000000\nmeme_motifs: ${projectDir}/assets/HOCOMOCOv11_core_HUMAN_mono_meme_format.tar.gz\nbioc_txdb: TxDb.Hsapiens.UCSC.hg38.knownGene\nbioc_annot: org.Hs.eg.db\n\n\n\n\n\nspecies: Mus musculus\nfasta: ${params.index_dir}/mm10_basic/mm10_basic.fa\ngenes_gtf: ${params.index_dir}/mm10_basic/genes.gtf\nblacklist_index: ${params.index_dir}/mm10_basic/indexes/blacklist/mm10.blacklist.chrM.chr_rDNA.*\nreference_index: ${params.index_dir}/mm10_basic/indexes/reference/mm10*\nchromosomes_dir: ${params.index_dir}/mm10_basic/Chromsomes/\nchrom_sizes: ${params.index_dir}/mm10_basic/indexes/mm10.fa.sizes\ngene_info: ${params.index_dir}/mm10_basic/geneinfo.bed\neffective_genome_size: 2400000000\nmeme_motifs: ${projectDir}/assets/HOCOMOCOv11_core_MOUSE_mono_meme_format.tar.gz\nbioc_txdb: TxDb.Mmusculus.UCSC.mm10.knownGene\nbioc_annot: org.Mmu.eg.db\n\n\n\n\n\nThese genomes can be passed to the --spike_genome parameter.\n\n\n\nspecies: Drosophila melanogaster\nfasta: ${params.index_dir}/dmelr6.32/indexes/dmelr6.32.fa\nreference_index: ${params.index_dir}/dmelr6.32/indexes/bwa/Drosophila_melanogaster.*\nblacklist_index: ${params.index_dir}/dmelr6.32/indexes/blacklist/dmelr6.32.blacklist.*\nblacklist_bed: ${params.index_dir}/dmelr6.32/indexes/dm6-blacklist.v2.no_chr.bed.gz\neffective_genome_size: 142573017\nchrom_sizes: ${params.index_dir}/dmelr6.32/chrom_dmelr6.28.sizes\n\n\n\n\n\nspecies: Escherichia coli K-12\nfasta: ${params.index_dir}/ecoli_k12/indexes/ecoli_k12.fa\nreference_index: ${params.index_dir}/ecoli_k12/indexes/ecoli_k12.*\nblacklist_bed: NO_FILE\neffective_genome_size: 4641652\nchrom_sizes: ${params.index_dir}/ecoli_k12/Chromosomes/chrom.sizes"
+  },
+  {
+    "objectID": "user-guide/output.html",
+    "href": "user-guide/output.html",
+    "title": "4. Expected Outputs",
+    "section": "",
+    "text": "This should include all pertitant information about output files, including extensions that differentiate files. An example is provided below.\n\n4. Expected Outputs\nThe following directories are created under the WORKDIR/results directory:\n\nalignment_stats: this directory include information on the alignment of each sample\npeaks: this directory contains a sub-directory that relates to the quality threshold used.\n\nquality threshold\n\ncontrasts: this directory includes the contrasts for each line listed in the contrast manifest\npeak_caller: this directory includes all peak calls from each peak_caller (SEACR, MACS2, GOPEAKS) for each sample\n\nannotation\n\ngo_enrichment: this directory includes gene set enrichment pathway predictions\nhomer: this directory includes the annotation output from HOMER\nrose: this directory includes the annotation output from ROSE\n\n\n\n\n\n├── alignment_stats\n├── bam\n├── peaks\n│   ├── 0.05\n│   │   ├── contrasts\n│   │   │   ├── contrast_id1.dedup_status\n│   │   │   └── contrast_id2.dedup_status\n│   │   ├── gopeaks\n│   │   │   ├── annotation\n│   │   │   │   ├── go_enrichment\n│   │   │   │   │   ├── contrast_id1.dedup_status.go_enrichment_tables\n│   │   │   │   │   └── contrast_id2.dedup_status.go_enrichment_html_report\n│   │   │   │   ├── homer\n│   │   │   │   │   ├── replicate_id1_vs_control_id.dedup_status.gopeaks_broad.motifs\n│   │   │   │   │   │   ├── homerResults\n│   │   │   │   │   │   └── knownResults\n│   │   │   │   │   ├── replicate_id1_vs_control_id.dedup_status.gopeaks_narrow.motifs\n│   │   │   │   │   │   ├── homerResults\n│   │   │   │   │   │   └── knownResults\n│   │   │   │   │   ├── replicate_id2_vs_control_id.dedup_status.gopeaks_broad.motifs\n│   │   │   │   │   │   ├── homerResults\n│   │   │   │   │   │   └── knownResults\n│   │   │   │   │   ├── replicate_id2_vs_control_id.dedup_status.gopeaks_narrow.motifs\n│   │   │   │   │   │   ├── homerResults\n│   │   │   │   │   │   └── knownResults\n│   │   │   │   └── rose\n│   │   │   │       ├── replicate_id1_vs_control_id.dedup_status.gopeaks_broad.12500\n│   │   │   │       ├── replicate_id1_vs_control_id.dedup_status.gopeaks_narrow.12500\n│   │   │   │       ├── replicate_id2_vs_control_id.dedup_status.dedup.gopeaks_broad.12500\n│   │   │   │       ├── replicate_id2_vs_control_id.dedup_status.dedup.gopeaks_narrow.12500\n│   │   │   └── peak_output\n│   │   ├── macs2\n│   │   │   ├── annotation\n│   │   │   │   ├── go_enrichment\n│   │   │   │   │   ├── contrast_id1.dedup_status.go_enrichment_tables\n│   │   │   │   │   └── contrast_id2.dedup_status.go_enrichment_html_report\n│   │   │   │   ├── homer\n│   │   │   │   │   ├── replicate_id1_vs_control_id.dedup_status.macs2_narrow.motifs\n│   │   │   │   │   │   ├── homerResults\n│   │   │   │   │   │   └── knownResults\n│   │   │   │   │   ├── replicate_id1_vs_control_id.dedup_status.macs2_broad.motifs\n│   │   │   │   │   │   ├── homerResults\n│   │   │   │   │   │   └── knownResults\n│   │   │   │   │   ├── replicate_id2_vs_control_id.dedup_status.macs2_narrow.motifs\n│   │   │   │   │   │   ├── homerResults\n│   │   │   │   │   │   └── knownResults\n│   │   │   │   │   ├── replicate_id2_vs_control_id.dedup_status.macs2_broad.motifs\n│   │   │   │   │   │   ├── homerResults\n│   │   │   │   │   │   └── knownResults\n│   │   │   │   └── rose\n│   │   │   │       ├── replicate_id1_vs_control_id.dedup_status.macs2_broad.12500\n│   │   │   │       ├── replicate_id1_vs_control_id.dedup_status.macs2_narrow.12500\n│   │   │   │       ├── replicate_id2_vs_control_id.dedup_status.macs2_broad.12500\n│   │   │   │       ├── replicate_id2_vs_control_id.dedup_status.macs2_narrow.12500\n│   │   │   └── peak_output",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "4. Expected Output"
+    ]
+  },
+  {
+    "objectID": "user-guide/preparing-files.html",
+    "href": "user-guide/preparing-files.html",
+    "title": "2. Preparing Files",
+    "section": "",
+    "text": "This should describe any input files needed, including config files, manifest files, and sample files. An example is provided below.",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "2. Preparing Files"
+    ]
+  },
+  {
+    "objectID": "user-guide/preparing-files.html#configs",
+    "href": "user-guide/preparing-files.html#configs",
+    "title": "2. Preparing Files",
+    "section": "2.1 Configs",
+    "text": "2.1 Configs\nThe configuration files control parameters and software of the pipeline. These files are listed below:\n\nconfig/config.yaml\nresources/cluster.yaml\nresources/tools.yaml\n\n\n2.1.1 Cluster Config\nThe cluster configuration file dictates the resources to be used during submission to Biowulf HPC. There are two different ways to control these parameters - first, to control the default settings, and second, to create or edit individual rules. These parameters should be edited with caution, after significant testing.\n\n\n2.1.2 Tools Config\nThe tools configuration file dictates the version of each software or program that is being used in the pipeline.\n\n\n2.1.3 Config YAML\nThere are several groups of parameters that are editable for the user to control the various aspects of the pipeline. These are :\n\nFolders and Paths\n\nThese parameters will include the input and output files of the pipeline, as well as list all manifest names.\n\nUser parameters\n\nThese parameters will control the pipeline features. These include thresholds and whether to perform processes.\n\nReferences\n\nThese parameters will control the location of index files, spike-in references, adaptors and species calling information.\n\n\n\n2.1.3.1 User Parameters\n\n2.1.3.1.1 Duplication Status\nUsers can select duplicated peaks (dedup) or non-deduplicated peaks (no_dedup) through the user parameter.\ndupstatus: \"dedup, no_dedup\"\n\n\n2.1.3.1.2 Macs2 additional option\nMACS2 can be run with or without the control. adding a control will increase peak specificity Selecting “Y” for the macs2_control will run the paired control sample provided in the sample manifest\n\n\n\n2.1.3.2 References\nAdditional reference files may be added to the pipeline, if other species were to be used.\nThe absolute file paths which must be included are:\n\nfa: “/path/to/species.fa”\nblacklist: “/path/to/blacklistbed/species.bed”\n\nThe following information must be included:\n\nregions: “list of regions to be included; IE chr1 chr2 chr3”\nmacs2_g: “macs2 genome shorthand; IE mm IE hs”",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "2. Preparing Files"
+    ]
+  },
+  {
+    "objectID": "user-guide/preparing-files.html#preparing-manifests",
+    "href": "user-guide/preparing-files.html#preparing-manifests",
+    "title": "2. Preparing Files",
+    "section": "2.2 Preparing Manifests",
+    "text": "2.2 Preparing Manifests\nThere are two manifests, one which required for all pipelines and one that is only required if running a differential analysis. These files describe information on the samples and desired contrasts. The paths of these files are defined in the snakemake_config.yaml file. These files are:\n\nsamplemanifest\ncontrasts\n\n\n2.2.1 Samples Manifest (REQUIRED)\nThis manifest will include information to sample level information. It includes the following column headers:\n\nsampleName: the sample name WITHOUT replicate number (IE “SAMPLE”)\nreplicateNumber: the sample replicate number (IE “1”)\nisControl: whether the sample should be identified as a control (IE “Y”)\ncontrolName: the name of the control to use for this sample (IE “CONTROL”)\ncontrolReplicateNumber: the replicate number of the control to use for this sample (IE “1”)\npath_to_R1: the full path to R1 fastq file (IE “/path/to/sample1.R1.fastq”)\npath_to_R2: the full path to R1 fastq file (IE “/path/to/sample2.R2.fastq”)\n\nAn example sampleManifest file is shown below:\n\n\n\n\n\n\n\n\n\n\n\n\nsampleName\nreplicateNumber\nisControl\ncontrolName\ncontrolReplicateNumber\npath_to_R1\npath_to_R2\n\n\n\n\n53_H3K4me3\n1\nN\nHN6_IgG_rabbit_negative_control\n1\nPIPELINE_HOME/.test/53_H3K4me3_1.R1.fastq.gz\nPIPELINE_HOME/.test/53_H3K4me3_1.R2.fastq.gz\n\n\n53_H3K4me3\n2\nN\nHN6_IgG_rabbit_negative_control\n1\nPIPELINE_HOME/.test/53_H3K4me3_2.R1.fastq.gz\nPIPELINE_HOME/.test/53_H3K4me3_2.R2.fastq.gz\n\n\nHN6_H3K4me3\n1\nN\nHN6_IgG_rabbit_negative_control\n1\nPIPELINE_HOME/.test/HN6_H3K4me3_1.R1.fastq.gz\nPIPELINE_HOME/.test/HN6_H3K4me3_1.R2.fastq.gz\n\n\nHN6_H3K4me3\n2\nN\nHN6_IgG_rabbit_negative_control\n1\nPIPELINE_HOME/.test/HN6_H3K4me3_2.R1.fastq.gz\nPIPELINE_HOME/.test/HN6_H3K4me3_2.R2.fastq.gz\n\n\nHN6_IgG_rabbit_negative_control\n1\nY\n-\n-\nPIPELINE_HOME/.test/HN6_IgG_rabbit_negative_control_1.R1.fastq.gz\nPIPELINE_HOME/.test/HN6_IgG_rabbit_negative_control_1.R2.fastq.gz",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "2. Preparing Files"
+    ]
+  },
+  {
+    "objectID": "user-guide/test-info.html",
+    "href": "user-guide/test-info.html",
+    "title": "5. Pipeline Tutorial",
+    "section": "",
+    "text": "This should walk the user through the steps of running the pipeline using test data",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "5. Running Test Data"
+    ]
+  },
+  {
+    "objectID": "user-guide/test-info.html#getting-started",
+    "href": "user-guide/test-info.html#getting-started",
+    "title": "5. Pipeline Tutorial",
+    "section": "5.1 Getting Started",
+    "text": "5.1 Getting Started\nReview the information on the Getting Started for a complete overview the pipeline. The tutorial below will use test data available on NIH Biowulf HPC only. All example code will assume you are running v1.0 of the pipeline, using test data available on GitHub.\nA. Change working directory to the CARLISLE repository\nB. Initialize Pipeline\nbash ./path/to/dir/carlisle --runmode=init --workdir=/path/to/output/dir",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "5. Running Test Data"
+    ]
+  },
+  {
+    "objectID": "user-guide/test-info.html#about-the-test-data",
+    "href": "user-guide/test-info.html#about-the-test-data",
+    "title": "5. Pipeline Tutorial",
+    "section": "5.2 About the test data",
+    "text": "5.2 About the test data\nThis test data consists of sub-sampled inputs, consisting of two pairs of two replicate samples and one control. The reference to be used is hg38.",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "5. Running Test Data"
+    ]
+  },
+  {
+    "objectID": "user-guide/test-info.html#submit-the-test-data",
+    "href": "user-guide/test-info.html#submit-the-test-data",
+    "title": "5. Pipeline Tutorial",
+    "section": "5.3 Submit the test data",
+    "text": "5.3 Submit the test data\nTest data is included in the .test directory as well as the config directory.\nA Run the test command to prepare the data, perform a dry-run and submit to the cluster\nbash ./path/to/dir/carlisle --runmode=testrun --workdir=/path/to/output/dir\n\n\nAn expected output for the testrun is as follows:\n\nJob stats:\njob                              count    min threads    max threads\n-----------------------------  -------  -------------  -------------\nDESeq                                  24              1              1\nalign                                   9             56             56\nalignstats                              9              2              2\nall                                     1              1              1\nbam2bg                                  9              4              4\ncreate_contrast_data_files             24              1              1\ncreate_contrast_peakcaller_files       12              1              1\ncreate_reference                        1             32             32\ncreate_replicate_sample_table           1              1              1\ndiffbb                                 24              1              1\nfilter                                 18              2              2\nfindMotif                              96              6              6\ngather_alignstats                       1              1              1\ngo_enrichment                          12              1              1\ngopeaks_broad                          16              2              2\ngopeaks_narrow                         16              2              2\nmacs2_broad                            16              2              2\nmacs2_narrow                           16              2              2\nmake_counts_matrix                     24              1              1\nmultiqc                                 2              1              1\nqc_fastqc                               9              1              1\nrose                                   96              2              2\nseacr_relaxed                          16              2              2\nseacr_stringent                        16              2              2\nspikein_assessment                      1              1              1\ntrim                                    9             56             56\ntotal                                 478              1             56",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "5. Running Test Data"
+    ]
+  },
+  {
+    "objectID": "user-guide/test-info.html#review-outputs",
+    "href": "user-guide/test-info.html#review-outputs",
+    "title": "5. Pipeline Tutorial",
+    "section": "5.4 Review outputs",
+    "text": "5.4 Review outputs\nReview the expected outputs on the Output page. If there are errors, review and performing stesp described on the Troubleshooting page as needed.",
+    "crumbs": [
+      "Home",
+      "Usage",
+      "5. Running Test Data"
+    ]
+  }
+]
