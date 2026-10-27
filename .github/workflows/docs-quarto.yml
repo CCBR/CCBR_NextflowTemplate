@@ -1,0 +1,35 @@
+name: docs
+# Render the Quarto website in docs/ and deploy it to a version subfolder of gh-pages
+# with quarto-version-selector (https://github.com/CCBR/quarto-version-selector).
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "**.md"
+      - .github/workflows/docs-quarto.yml
+
+# Deploys share one docs branch: run them one at a time.
+concurrency:
+  group: docs-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write # push to gh-pages
+  pages: write # request a Pages build after the push
+
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # tags and history are needed to determine the docs version
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - uses: CCBR/quarto-version-selector/.github/actions/deploy-version@main
+        with:
+          github-token: ${{ github.token }}
+          path: docs

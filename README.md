@@ -5,7 +5,7 @@ CCBR template for creating Nextflow pipelines <!-- TODO: replace this line with 
 <!-- TODO: replace CCBR/CCBR_NextflowTemplate in these badge links with your OWNER/TOOL_NAME -->
 
 [![build](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build-nextflow.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/build-nextflow.yml)
-[![docs](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/docs-mkdocs.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/docs-mkdocs.yml)
+[![docs](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/docs-quarto.yml/badge.svg)](https://github.com/CCBR/CCBR_NextflowTemplate/actions/workflows/docs-quarto.yml)
 
 See the website for detailed information, documentation, and examples:
 <https://ccbr.github.io/TOOL_NAME/>
@@ -25,7 +25,7 @@ See the website for detailed information, documentation, and examples:
         --confirm
      ```
 1. Read and follow the contributing guidelines in `.github/CONTRIBUTING.md`.
-   Be sure to [install `pre-commit` and its hooks](.github/CONTRIBUTING.md#use-pre-commit-hooks) before making any commits.
+   Be sure to [install `pre-commit` and its hooks](https://github.com/CCBR/CCBR_NextflowTemplate/blob/main/.github/CONTRIBUTING.md#use-pre-commit-hooks) before making any commits.
 1. Change all instances of `TOOL_NAME` and `tool_name` throughout the repo with the actual tool name.
    Replace `TOOL_NAME` with the all-caps version (refers to the GitHub repo name)
    and `tool_name` with the lowercase version (refers to the command-line interface). Places include:
@@ -44,7 +44,7 @@ See the website for detailed information, documentation, and examples:
    CITATION.cff
    README.md
    main.nf
-   mkdocs.yml
+   docs/_quarto.yml
    nextflow.config
    pyproject.toml
    src/__main__.py
@@ -59,10 +59,10 @@ See the website for detailed information, documentation, and examples:
      Also consider contributing new modules & subworkflows to that repository!
 1. Write your documentation in `docs/` and enable GitHub Pages.
    - In settings, go to General > Pages and select the `gh-pages` branch.
-     mkdocs will build your site under the `gh-pages` branch, and GitHub Pages will make it available at `https://OWNER.github.io/TOOL_NAME`.
+     Quarto will render your site (with [quarto-version-selector](https://github.com/CCBR/quarto-version-selector) for versioned docs) under the `gh-pages` branch, and GitHub Pages will make it available at `https://OWNER.github.io/TOOL_NAME`.
 1. Edit the README:
    1. Change the title and description.
-   1. Delete the section [Using this template](README.md##using-this-template).
+   1. Delete the section [Using this template](https://github.com/CCBR/CCBR_NextflowTemplate/blob/main/README.md#using-this-template).
 1. You can look for instances of `TOOL_NAME` in case you missed any with grep:
 
    ```sh
@@ -113,7 +113,7 @@ Come across a **bug**? Open an [issue](https://github.com/CCBR/TOOL_NAME/issues)
 
 Have a **question**? Ask it in [discussions](https://github.com/CCBR/TOOL_NAME/discussions).
 
-Want to **contribute** to this project? Check out the [contributing guidelines](docs/contributing.md).
+Want to **contribute** to this project? Check out the [contributing guidelines](https://github.com/CCBR/TOOL_NAME/blob/main/.github/CONTRIBUTING.md).
 
 ## References
 

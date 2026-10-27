@@ -1,0 +1,117 @@
+/*
+ * Override these custom properties to restyle the selector, e.g.
+ *   .quarto-version-selector { --version-selector-fg: white; }
+ * Defaults follow the active Bootstrap theme (light and dark).
+ */
+.quarto-version-selector {
+  --version-selector-fg: var(--bs-navbar-color, var(--bs-body-color));
+  --version-selector-fg-hover: var(--bs-navbar-hover-color, var(--bs-link-hover-color));
+  --version-selector-bg: transparent;
+  --version-selector-border: var(--bs-border-color, currentColor);
+  --version-selector-menu-fg: var(--bs-dropdown-color, var(--bs-body-color, CanvasText));
+  --version-selector-menu-bg: var(--bs-dropdown-bg, var(--bs-body-bg, Canvas));
+  --version-selector-alias-bg: var(--bs-secondary-bg, rgba(127, 127, 127, 0.15));
+  --version-selector-alias-fg: var(--bs-secondary-color, inherit);
+  --version-selector-font-size: 0.875rem;
+  position: relative;
+  display: inline-block;
+}
+
+.quarto-version-selector-toggle {
+  color: var(--version-selector-fg);
+  background: var(--version-selector-bg);
+  border: 1px solid var(--version-selector-border);
+  font-size: var(--version-selector-font-size);
+  padding: 0.15rem 0.5rem;
+}
+
+.quarto-version-selector-toggle:hover,
+.quarto-version-selector-toggle:focus {
+  color: var(--version-selector-fg-hover);
+}
+
+.quarto-version-selector-menu {
+  background-color: var(--version-selector-menu-bg);
+  color: var(--version-selector-menu-fg);
+  font-size: var(--version-selector-font-size);
+  min-width: 10rem;
+}
+
+/*
+ * Open/closed states for formats without Bootstrap's CSS. :where() has zero
+ * specificity, so Bootstrap's own .dropdown-menu rules win when present.
+ */
+:where(.quarto-version-selector-menu) {
+  display: none;
+  position: absolute;
+  right: 0;
+  z-index: 1000;
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  border: 1px solid var(--version-selector-border);
+  border-radius: 0.25rem;
+}
+
+:where(.quarto-version-selector-menu.show) {
+  display: block;
+}
+
+:where(.quarto-version-selector-menu .dropdown-item) {
+  display: block;
+  padding: 0.25rem 1rem;
+  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+}
+
+.quarto-version-selector-alias {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0 0.4em;
+  border-radius: var(--bs-border-radius-sm, 0.2rem);
+  font-size: 0.8em;
+  background: var(--version-selector-alias-bg);
+  color: var(--version-selector-alias-fg);
+}
+
+.quarto-version-selector-navbar {
+  margin: 0 0.5rem;
+  align-self: center;
+}
+
+.quarto-version-selector-item {
+  display: flex;
+  align-items: center;
+}
+
+.quarto-version-selector-sidebar {
+  --version-selector-fg: var(--bs-body-color);
+  --version-selector-fg-hover: var(--bs-link-hover-color);
+  display: block;
+  margin: 0;
+}
+
+/* Quarto pads every sidebar child by 1em; tighten the gap below the selector. */
+#quarto-sidebar>.quarto-version-selector-sidebar+* {
+  padding-top: 0.5em;
+}
+
+.quarto-version-selector-sidebar .quarto-version-selector-menu {
+  right: auto;
+  left: 0;
+}
+
+.quarto-version-selector-fixed {
+  position: fixed;
+  top: 0.5rem;
+  z-index: 1100;
+}
+
+.quarto-version-selector-fixed-left {
+  left: 0.5rem;
+}
+
+.quarto-version-selector-fixed-right {
+  right: 0.5rem;
+}

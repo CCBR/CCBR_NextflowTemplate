@@ -67,3 +67,25 @@ tool_name = "."
 [tool.setuptools.dynamic]
 version = {file = "VERSION"}
 readme = {file = "README.md"}
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["osx-arm64"]
+
+[tool.pixi.dependencies]
+quarto = ">=1.9,<2"
+
+[tool.pixi.pypi-dependencies]
+TOOL_NAME = { path = ".", editable = true }
+quarto-version-selector = { git = "https://github.com/CCBR/quarto-version-selector.git", branch = "main" }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+dev = { features = ["dev"], solve-group = "default" }
+test = { features = ["test"], solve-group = "default" }
+
+[tool.pixi.tasks]
+docs-render = "quarto render docs"
+docs-preview = "quarto preview docs"
+docs-serve = { cmd = "quarto-version-selector serve --site-dir docs/_site", depends-on = ["docs-render"] }
+docs-update-extensions = { cmd = "quarto update extension CCBR/quarto-fnl --no-prompt && quarto update extension CCBR/quarto-version-selector --no-prompt", cwd = "docs" }
