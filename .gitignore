@@ -43,3 +43,8 @@ results/
 /params.yaml
 .nf-test
 /setup-nextflow/
+
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+pixi.lock
