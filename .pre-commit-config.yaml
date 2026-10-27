@@ -5,6 +5,7 @@ exclude: |
       ^assets/|
       ^docs/.*.html|
       ^_extensions/|
+      ^docs/_extensions/|
       ^nextflow_schema.json|
       ^.*.svg |
       ^.github/CONTRIBUTING.md

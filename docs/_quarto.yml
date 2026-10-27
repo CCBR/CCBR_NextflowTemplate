@@ -1,0 +1,72 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.md"
+    - "user-guide/*.md"
+    - "!_*.md"
+
+website:
+  title: "TOOL_NAME"
+  description: "insert a one-line description of TOOL_NAME here"
+  site-url: https://ccbr.github.io/TOOL_NAME
+  repo-url: https://github.com/CCBR/TOOL_NAME
+  repo-subdir: docs
+  repo-branch: main
+  repo-actions: [edit, source, issue]
+  search:
+    location: sidebar
+  navbar:
+    left:
+      - text: Home
+        href: index.md
+      - text: User Guide
+        href: user-guide/getting-started.md
+      - text: Contributing
+        href: contributing.md
+      - text: Changelog
+        href: changelog.md
+    right:
+      - icon: github
+        href: https://github.com/CCBR/TOOL_NAME
+  sidebar:
+    style: docked
+    contents:
+      - href: index.md
+        text: Background
+      - section: Usage
+        contents:
+          - href: user-guide/getting-started.md
+            text: 1. Getting Started
+          - href: user-guide/preparing-files.md
+            text: 2. Preparing Files
+          - href: user-guide/run.md
+            text: 3. Running the Pipeline
+          - href: user-guide/output.md
+            text: 4. Expected Output
+          - href: user-guide/test-info.md
+            text: 5. Running Test Data
+          - href: user-guide/troubleshooting.md
+            text: Troubleshooting
+      - section: FAQ
+        contents:
+          - href: contributing.md
+            text: How to contribute
+          - href: contributors.md
+            text: Contributors
+      - href: changelog.md
+        text: Changelog
+  page-footer:
+    left: |
+      Copyright &copy; 2023-2026
+      [CCR Collaborative Bioinformatics Resource](https://github.com/CCBR)
+
+filters:
+  - version-selector
+version-selector:
+  placement: navbar-left
+
+format:
+  fnl-html:
+    toc: true
+    code-copy: true

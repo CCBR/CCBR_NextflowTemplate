@@ -1,0 +1,236 @@
+/*-- scss:defaults --*/
+
+// branding guidelines
+// https://nih.sharepoint.com/:b:/r/sites/NCI-Fred/Communications/Shared%20Documents/Branding%20guidelines%20LIVE.pdf?csf=1&web=1&e=e9PrVO
+
+// primary colors
+$black: #000000;
+$teal: #2A7386;
+$apple-green: #82C04D;
+$dark-green: #079246;
+$dark-teal: #10404D;
+
+// secondary colors
+//// secondary neutrals
+$off-black-text: #3B3F3F;
+$pale-teal-neutral: #A6C7C9;
+$light-grey-neutral: #E2E2E2;
+$white: #ffffff;
+//// secondary special
+$brighter-teal: #348FA6;
+$bright-green: #CFFDA9;
+$yellow: #F9EC38;
+$shadows: #10404D; // 70% OPACITY
+
+// deprecated - FNL branding colors changed in 2026
+$dep-lime: #7cc349;
+$dep-teal: #296b7f;
+$dep-teal-light: #4e9db5;
+$dep-teal-dark: #19424e;
+$dep-almost-black: #03191f;
+$dep-lime-light: #b1ee85;
+$dep-lime-dark: #528230;
+$dep-orange: #ecba4c;
+
+// set colors
+$primary: $dark-teal;
+$secondary: $apple-green;
+$success: $dark-green;
+$warning: $yellow;
+$info: $brighter-teal;
+
+$link-color: $teal;
+
+$footer-bg: $black;
+$footer-fg: $white;
+
+$code-color: $dark-green;
+$code-block-border-color: $dark-teal;
+
+
+$callout-color-tip: $dark-green;
+$callout-color-note: $brighter-teal;
+$callout-color-caution: $yellow;
+$callout-color-warning: $dep-orange;
+
+// font
+$font-family-sans-serif: "Roboto", Helvetica, "Source Sans Pro", sans-serif;
+$font-family-monospace: "Roboto Mono", "Andale Mono" "Source Code Pro",
+  monospace;
+
+$presentation-font-size-root: 28px;
+$presentation-heading-color: $teal;
+$body-color: $off-black-text;
+
+/*-- scss:rules --*/
+
+.reveal .slide {
+  background: linear-gradient(to bottom, $white, $light-grey-neutral ) !important;
+  background-size: 100% 100% !important;
+}
+.reveal .slide blockquote {
+  border-left: 3px solid $teal !important;
+  padding-left: 0.5em !important;
+}
+
+.reveal .slide-logo {
+  bottom: 10px !important;
+  right: 20px !important;
+  height: 65px !important;
+  width: auto !important;
+  max-width: unset !important;
+  max-height: unset !important;
+  position: fixed;
+}
+
+.reveal .subtitle {
+  color: $presentation-heading-color !important;
+  font-size: $presentation-h3-font-size !important;
+}
+
+/* can't figure out how to override author class?
+.reveal .author {
+  color: $body-color !important;
+}
+*/
+.reveal .date {
+  color: $body-color !important;
+}
+
+/* font size shortcuts */
+
+.small-text {
+  font-size: small !important;
+}
+
+.smaller-text {
+  font-size: smaller !important;
+}
+
+.x-small-text {
+  font-size: x-small !important;
+}
+
+.medium-text {
+  font-size: medium !important;
+}
+
+.large-text {
+  font-size: large !important;
+}
+
+.x-large-text {
+  font-size: x-large !important;
+}
+
+.xx-large-text {
+  font-size: xx-large !important;
+}
+
+.xxx-large-text {
+  font-size: xxx-large !important;
+}
+
+/* color muted */
+.color-muted {
+  color: $text-muted !important;
+}
+
+/* boxes and frames */
+
+.big-center {
+  font-size: 60px !important;
+  color: $dark-green !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  padding: 200px 0;
+}
+
+.vertical-align-top {
+  vertical-align: top !important;
+}
+
+.align-center {
+  text-align: center !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.big-middle {
+  font-size: xxx-large !important;
+  color: $dark-green !important;
+  vertical-align: middle !important;
+  padding: 70px !important;
+}
+
+.frame-box {
+  border: 3px solid $dark-teal !important;
+  border-radius: 5px !important;
+  padding: 0.5em !important;
+}
+
+.filled-box {
+  border: 2px solid $pale-teal-neutral !important;
+  border-radius: 5px !important;
+  padding: 1px !important;
+  background: $dark-teal !important;
+  color: $white !important;
+}
+
+.black-frame {
+  border: 2px solid $black !important;
+  border-radius: 2px !important;
+}
+
+.narrow-frame {
+  border: 1.5px solid !important;
+  border-radius: 2px !important;
+  //padding: 0.5px !important;
+  text-align: center !important;
+  font-size: large !important;
+  background: $light-grey-neutral !important;
+  color: $body-color !important;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.flex-container img {
+  max-width: 100%;
+  height: auto;
+  /* Maintain aspect ratio */
+  flex: 1 1 auto;
+  /* Allow images to grow and shrink */
+  object-fit: cover;
+  //position: absolute;
+}
+
+/* Optional: Add media queries for responsiveness */
+@media (max-height: 480px) {
+  .flex-container img {
+    flex: 1 1 100%;
+    /* Full width on small screens */
+  }
+}
+
+/* customize code block colors */
+
+.reveal .code-with-filename .code-with-filename-file {
+  background-color: $dark-teal !important; // or any hex/variable like $pale-teal-neutral, #e9ecef
+  color: $white !important;               // font color for the filename text
+}
+
+// Optional: ensure the inner <pre> / text inherits the color nicely
+.reveal .code-with-filename .code-with-filename-file pre,
+.reveal .code-with-filename .code-with-filename-file pre code {
+  color: inherit !important;
+  background-color: transparent !important;
+}
